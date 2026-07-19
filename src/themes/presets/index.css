@@ -1,0 +1,10 @@
+/**
+ * Aggregator that ships all brand presets in one file.
+ * Include this only if you want the ability to switch brands at runtime
+ * via <html data-brand="rose">. Cost: ~1 KB gz for the extra rules.
+ */
+@import './slate.css';
+@import './rose.css';
+@import './violet.css';
+@import './emerald.css';
+@import './orange.css';

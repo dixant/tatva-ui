@@ -1,0 +1,22 @@
+{
+  "name": "breadcrumb",
+  "displayName": "Breadcrumb",
+  "type": "component",
+  "files": [
+    {
+      "name": "Breadcrumb.tsx",
+      "content": "import {\n  Children,\n  cloneElement,\n  isValidElement,\n  type ReactElement,\n  type ReactNode,\n} from 'react';\nimport { cn } from '../../utils/cn';\nimport styles from './Breadcrumb.module.css';\n\nexport interface BreadcrumbItemProps {\n  href?: string;\n  active?: boolean;\n  className?: string;\n  children: ReactNode;\n}\n\nfunction Item({ href, active, className, children }: BreadcrumbItemProps) {\n  if (active) {\n    return (\n      <span\n        aria-current=\"page\"\n        className={cn(styles.item, styles.active, className)}\n      >\n        {children}\n      </span>\n    );\n  }\n  return (\n    <a href={href ?? '#'} className={cn(styles.item, styles.link, className)}>\n      {children}\n    </a>\n  );\n}\n\nexport interface BreadcrumbProps {\n  separator?: ReactNode;\n  className?: string;\n  children: ReactNode;\n  'aria-label'?: string;\n}\n\nfunction BreadcrumbRoot({\n  separator = '/',\n  className,\n  children,\n  'aria-label': ariaLabel = 'Breadcrumb',\n}: BreadcrumbProps) {\n  const items = Children.toArray(children).filter(isValidElement);\n  const lastIdx = items.length - 1;\n  return (\n    <nav aria-label={ariaLabel} className={cn(styles.nav, className)}>\n      <ol className={styles.list}>\n        {items.map((child, i) => {\n          const isLast = i === lastIdx;\n          const el = child as ReactElement<BreadcrumbItemProps>;\n          const withActive =\n            el.props.active === undefined\n              ? cloneElement(el, { active: isLast } as Partial<BreadcrumbItemProps>)\n              : el;\n          return (\n            <li key={i} className={styles.li}>\n              {withActive}\n              {!isLast && (\n                <span aria-hidden=\"true\" className={styles.separator}>\n                  {separator}\n                </span>\n              )}\n            </li>\n          );\n        })}\n      </ol>\n    </nav>\n  );\n}\n\n/** Compound Breadcrumb: `<Breadcrumb><Breadcrumb.Item/></Breadcrumb>` */\nexport const Breadcrumb = Object.assign(BreadcrumbRoot, { Item });\n"
+    },
+    {
+      "name": "Breadcrumb.module.css",
+      "content": ".nav {\n  font-family: var(--tatva-font-family);\n  font-size: var(--tatva-font-size-sm);\n  color: var(--tatva-color-fg-muted);\n}\n\n.list {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: var(--tatva-space-2);\n}\n\n.li {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--tatva-space-2);\n}\n\n.item {\n  color: inherit;\n}\n\n.link {\n  color: var(--tatva-color-primary-700);\n  text-decoration: none;\n}\n.link:hover {\n  text-decoration: underline;\n}\n\n.active {\n  color: var(--tatva-color-fg);\n  font-weight: var(--tatva-font-weight-medium);\n}\n\n.separator {\n  color: var(--tatva-color-fg-muted);\n  user-select: none;\n}\n"
+    },
+    {
+      "name": "index.ts",
+      "content": "export { Breadcrumb } from './Breadcrumb';\nexport type { BreadcrumbProps, BreadcrumbItemProps } from './Breadcrumb';\n"
+    }
+  ],
+  "registryDependencies": [],
+  "dependencies": [],
+  "devDependencies": []
+}

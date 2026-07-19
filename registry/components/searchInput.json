@@ -1,0 +1,26 @@
+{
+  "name": "searchInput",
+  "displayName": "SearchInput",
+  "type": "component",
+  "files": [
+    {
+      "name": "SearchInput.tsx",
+      "content": "import { forwardRef, useEffect, useRef, useState } from 'react';\nimport { Input, type InputProps } from '../Input';\nimport { Icon } from '../Icon';\nimport { Spinner } from '../Spinner';\n\nexport interface SearchInputProps extends Omit<InputProps, 'onChange' | 'type' | 'label'> {\n  label?: string;\n  onSearch?: (value: string) => void;\n  debounceMs?: number;\n  loading?: boolean;\n  onClear?: () => void;\n  value?: string;\n  defaultValue?: string;\n  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;\n}\n\nexport const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(\n  function SearchInput(\n    {\n      label = 'Search',\n      onSearch,\n      debounceMs = 300,\n      loading = false,\n      onClear,\n      value,\n      defaultValue = '',\n      onChange,\n      placeholder = 'Search…',\n      ...rest\n    },\n    ref,\n  ) {\n    const [inner, setInner] = useState<string>(String(value ?? defaultValue));\n    const isControlled = value !== undefined;\n    const current = isControlled ? String(value) : inner;\n    const timer = useRef<ReturnType<typeof setTimeout> | null>(null);\n\n    useEffect(\n      () => () => {\n        if (timer.current) clearTimeout(timer.current);\n      },\n      [],\n    );\n\n    const setValue = (v: string) => {\n      if (!isControlled) setInner(v);\n    };\n\n    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {\n      setValue(e.target.value);\n      onChange?.(e);\n      if (!onSearch) return;\n      if (timer.current) clearTimeout(timer.current);\n      const v = e.target.value;\n      timer.current = setTimeout(() => onSearch(v), debounceMs);\n    };\n\n    const handleClear = () => {\n      setValue('');\n      if (timer.current) clearTimeout(timer.current);\n      onSearch?.('');\n      onClear?.();\n    };\n\n    const hasValue = current.length > 0;\n\n    return (\n      <Input\n        ref={ref}\n        type=\"search\"\n        label={label}\n        placeholder={placeholder}\n        // Always controlled internally so clearing via the button\n        // synchronously resets the input value.\n        value={current}\n        onChange={handleChange}\n        leftAddon={<Icon name=\"search\" size=\"sm\" aria-hidden=\"true\" />}\n        rightAddon={\n          loading ? (\n            <Spinner size={16} label=\"Searching\" />\n          ) : hasValue ? (\n            <button\n              type=\"button\"\n              aria-label=\"Clear search\"\n              onClick={handleClear}\n              style={{\n                background: 'transparent',\n                border: 'none',\n                cursor: 'pointer',\n                color: 'var(--tatva-color-fg-muted)',\n                padding: 4,\n                borderRadius: 4,\n                display: 'inline-flex',\n              }}\n            >\n              <Icon name=\"close\" size=\"sm\" />\n            </button>\n          ) : undefined\n        }\n        {...rest}\n      />\n    );\n  },\n);\n"
+    },
+    {
+      "name": "SearchInput.module.css",
+      "content": "/* SearchInput composes Input for styling; nothing custom needed here.\n   File exists to preserve the per-component convention. */\n"
+    },
+    {
+      "name": "index.ts",
+      "content": "export { SearchInput } from './SearchInput';\nexport type { SearchInputProps } from './SearchInput';\n"
+    }
+  ],
+  "registryDependencies": [
+    "input",
+    "icon",
+    "spinner"
+  ],
+  "dependencies": [],
+  "devDependencies": []
+}

@@ -1,0 +1,22 @@
+{
+  "name": "alert",
+  "displayName": "Alert",
+  "type": "component",
+  "files": [
+    {
+      "name": "Alert.tsx",
+      "content": "import { forwardRef, type ReactNode } from 'react';\nimport { cn, vc } from '../../utils/cn';\nimport styles from './Alert.module.css';\n\nexport type AlertVariant = 'info' | 'success' | 'warning' | 'error';\n\nexport interface AlertProps {\n  variant?: AlertVariant;\n  title?: string;\n  children?: ReactNode;\n  icon?: ReactNode;\n  closable?: boolean;\n  onClose?: () => void;\n  className?: string;\n}\n\nconst defaultIcon: Record<AlertVariant, string> = {\n  info: 'i',\n  success: '✓',\n  warning: '!',\n  error: '✕',\n};\n\nexport const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(\n  {\n    variant = 'info',\n    title,\n    children,\n    icon,\n    closable = false,\n    onClose,\n    className,\n    'data-testid': dataTestId = 'tatva-alert',\n  }: AlertProps & { 'data-testid'?: string },\n  ref,\n) {\n  const role = variant === 'error' || variant === 'warning' ? 'alert' : 'status';\n  return (\n    <div\n      ref={ref}\n      role={role}\n      className={cn(styles.alert, vc(styles, 'variant', variant), className)}\n      data-testid={dataTestId}\n    >\n      <span className={styles.icon} aria-hidden=\"true\">\n        {icon ?? defaultIcon[variant]}\n      </span>\n      <div className={styles.body}>\n        {title && <div className={styles.title}>{title}</div>}\n        {children && <div className={styles.description}>{children}</div>}\n      </div>\n      {closable && (\n        <button\n          type=\"button\"\n          className={styles.close}\n          aria-label=\"Close alert\"\n          onClick={onClose}\n        >\n          ×\n        </button>\n      )}\n    </div>\n  );\n});\n"
+    },
+    {
+      "name": "Alert.module.css",
+      "content": ".alert {\n  display: flex;\n  align-items: flex-start;\n  gap: var(--tatva-space-3);\n  padding: var(--tatva-space-3) var(--tatva-space-4);\n  border-radius: var(--tatva-radius-md);\n  border-left: 4px solid;\n  font-family: var(--tatva-font-family);\n  font-size: var(--tatva-font-size-sm);\n  line-height: var(--tatva-line-height-normal);\n}\n\n.variantInfo {\n  background-color: var(--tatva-color-info-bg);\n  border-left-color: var(--tatva-color-info);\n  color: var(--tatva-color-fg);\n}\n.variantSuccess {\n  background-color: var(--tatva-color-success-bg);\n  border-left-color: var(--tatva-color-success);\n  color: var(--tatva-color-fg);\n}\n.variantWarning {\n  background-color: var(--tatva-color-warning-bg);\n  border-left-color: var(--tatva-color-warning);\n  color: var(--tatva-color-fg);\n}\n.variantError {\n  background-color: var(--tatva-color-error-bg);\n  border-left-color: var(--tatva-color-error);\n  color: var(--tatva-color-fg);\n}\n\n.icon {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  color: #ffffff;\n  font-weight: var(--tatva-font-weight-bold);\n  font-size: 12px;\n  flex: 0 0 auto;\n  margin-top: 2px;\n}\n\n.variantInfo .icon { background-color: var(--tatva-color-info); }\n.variantSuccess .icon { background-color: var(--tatva-color-success); }\n.variantWarning .icon { background-color: var(--tatva-color-warning); }\n.variantError .icon { background-color: var(--tatva-color-error); }\n\n.body {\n  flex: 1;\n  min-width: 0;\n}\n\n.title {\n  font-weight: var(--tatva-font-weight-semibold);\n  margin-bottom: var(--tatva-space-1);\n}\n\n.description {}\n\n.close {\n  background: transparent;\n  border: none;\n  color: var(--tatva-color-fg-muted);\n  cursor: pointer;\n  font-size: 18px;\n  line-height: 1;\n  padding: 0 var(--tatva-space-1);\n  border-radius: var(--tatva-radius-sm);\n}\n.close:hover {\n  background-color: rgba(0, 0, 0, 0.05);\n}\n"
+    },
+    {
+      "name": "index.ts",
+      "content": "export { Alert } from './Alert';\nexport type { AlertProps, AlertVariant } from './Alert';\n"
+    }
+  ],
+  "registryDependencies": [],
+  "dependencies": [],
+  "devDependencies": []
+}

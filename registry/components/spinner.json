@@ -1,0 +1,22 @@
+{
+  "name": "spinner",
+  "displayName": "Spinner",
+  "type": "component",
+  "files": [
+    {
+      "name": "Spinner.tsx",
+      "content": "import { forwardRef } from 'react';\nimport { cn } from '../../utils/cn';\nimport styles from './Spinner.module.css';\n\nexport type SpinnerSize = 'sm' | 'md' | 'lg' | 'xl';\n\nexport interface SpinnerProps {\n  size?: SpinnerSize | number;\n  color?: string;\n  label?: string;\n  className?: string;\n}\n\nconst sizeMap: Record<SpinnerSize, number> = { sm: 16, md: 24, lg: 32, xl: 48 };\n\nexport const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Spinner(\n  {\n    size = 'md',\n    color,\n    label = 'Loading',\n    className,\n    'data-testid': dataTestId = 'tatva-spinner',\n  }: SpinnerProps & { 'data-testid'?: string },\n  ref,\n) {\n  const px = typeof size === 'number' ? size : sizeMap[size];\n  const stroke = color ?? 'var(--tatva-color-primary-500)';\n  return (\n    <span role=\"status\" aria-label={label} className={cn(styles.wrap, className)} data-testid={dataTestId}>\n      <svg\n        ref={ref}\n        className={styles.spinner}\n        width={px}\n        height={px}\n        viewBox=\"0 0 24 24\"\n        fill=\"none\"\n        aria-hidden=\"true\"\n      >\n        <circle cx=\"12\" cy=\"12\" r=\"10\" stroke={stroke} strokeOpacity=\"0.25\" strokeWidth=\"3\" />\n        <path\n          d=\"M22 12A10 10 0 0 0 12 2\"\n          stroke={stroke}\n          strokeWidth=\"3\"\n          strokeLinecap=\"round\"\n        />\n      </svg>\n      <span className={styles.srOnly}>{label}</span>\n    </span>\n  );\n});\n"
+    },
+    {
+      "name": "Spinner.module.css",
+      "content": ".wrap {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.spinner {\n  animation: tatva-spin 0.7s linear infinite;\n}\n\n.srOnly {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0;\n}\n\n@keyframes tatva-spin {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}\n"
+    },
+    {
+      "name": "index.ts",
+      "content": "export { Spinner } from './Spinner';\nexport type { SpinnerProps, SpinnerSize } from './Spinner';\n"
+    }
+  ],
+  "registryDependencies": [],
+  "dependencies": [],
+  "devDependencies": []
+}

@@ -1,0 +1,22 @@
+{
+  "name": "divider",
+  "displayName": "Divider",
+  "type": "component",
+  "files": [
+    {
+      "name": "Divider.tsx",
+      "content": "import { forwardRef, type ReactNode } from 'react';\nimport { cn } from '../../utils/cn';\nimport styles from './Divider.module.css';\n\nexport interface DividerProps {\n  orientation?: 'horizontal' | 'vertical';\n  label?: ReactNode;\n  className?: string;\n  'data-testid'?: string;\n}\n\nexport const Divider = forwardRef<HTMLDivElement, DividerProps>(function Divider(\n  {\n    orientation = 'horizontal',\n    label,\n    className,\n    'data-testid': dataTestId = 'tatva-divider',\n  },\n  ref,\n) {\n  if (label && orientation === 'horizontal') {\n    return (\n      <div\n        ref={ref}\n        role=\"separator\"\n        aria-orientation=\"horizontal\"\n        className={cn(styles.labeled, className)}\n        data-testid={dataTestId}\n      >\n        <span className={styles.line} />\n        <span className={styles.label}>{label}</span>\n        <span className={styles.line} />\n      </div>\n    );\n  }\n  return (\n    <div\n      ref={ref}\n      role=\"separator\"\n      aria-orientation={orientation}\n      className={cn(\n        orientation === 'vertical' ? styles.vertical : styles.horizontal,\n        className,\n      )}\n      data-testid={dataTestId}\n    />\n  );\n});\n"
+    },
+    {
+      "name": "Divider.module.css",
+      "content": ".horizontal {\n  width: 100%;\n  height: 1px;\n  background-color: var(--tatva-color-border);\n  border: none;\n}\n\n.vertical {\n  width: 1px;\n  align-self: stretch;\n  background-color: var(--tatva-color-border);\n  border: none;\n}\n\n.labeled {\n  display: flex;\n  align-items: center;\n  gap: var(--tatva-space-3);\n  color: var(--tatva-color-fg-muted);\n  font-family: var(--tatva-font-family);\n  font-size: var(--tatva-font-size-xs);\n  text-transform: uppercase;\n  letter-spacing: 0.05em;\n}\n\n.line {\n  flex: 1;\n  height: 1px;\n  background-color: var(--tatva-color-border);\n}\n\n.label {\n  flex-shrink: 0;\n}\n"
+    },
+    {
+      "name": "index.ts",
+      "content": "export { Divider } from './Divider';\nexport type { DividerProps } from './Divider';\n"
+    }
+  ],
+  "registryDependencies": [],
+  "dependencies": [],
+  "devDependencies": []
+}

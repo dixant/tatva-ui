@@ -1,0 +1,22 @@
+{
+  "name": "icon",
+  "displayName": "Icon",
+  "type": "component",
+  "files": [
+    {
+      "name": "Icon.tsx",
+      "content": "import { forwardRef, type SVGProps } from 'react';\nimport { cn } from '../../utils/cn';\nimport styles from './Icon.module.css';\nimport { icons, type IconName } from './icons';\n\nexport type IconSize = 'sm' | 'md' | 'lg' | 'xl';\n\nexport interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'name'> {\n  name: IconName;\n  size?: IconSize | number;\n  color?: string;\n  /** Accessible label. If omitted, the icon is aria-hidden (decorative). */\n  label?: string;\n  className?: string;\n}\n\nconst sizeMap: Record<IconSize, number> = { sm: 16, md: 20, lg: 24, xl: 32 };\n\nexport const Icon = forwardRef<SVGSVGElement, IconProps>(function Icon(\n  {\n    name,\n    size = 'md',\n    color = 'currentColor',\n    label,\n    className,\n    'data-testid': dataTestId = 'tatva-icon',\n    ...rest\n  }: IconProps & { 'data-testid'?: string },\n  ref,\n) {\n  const px = typeof size === 'number' ? size : sizeMap[size];\n  const IconComponent = icons[name];\n  return (\n    <svg\n      ref={ref}\n      width={px}\n      height={px}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke={color}\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      role={label ? 'img' : undefined}\n      aria-label={label}\n      aria-hidden={label ? undefined : true}\n      className={cn(styles.icon, className)}\n      data-testid={dataTestId}\n      {...rest}\n    >\n      <IconComponent />\n    </svg>\n  );\n});\n"
+    },
+    {
+      "name": "Icon.module.css",
+      "content": ".icon {\n  flex-shrink: 0;\n  display: inline-block;\n  vertical-align: middle;\n}\n"
+    },
+    {
+      "name": "index.ts",
+      "content": "export { Icon } from './Icon';\nexport type { IconProps, IconSize } from './Icon';\nexport type { IconName } from './icons';\nexport { icons } from './icons';\n"
+    }
+  ],
+  "registryDependencies": [],
+  "dependencies": [],
+  "devDependencies": []
+}

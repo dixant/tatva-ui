@@ -26,20 +26,31 @@
       "import": "./dist/tatva-ui.es.js",
       "require": "./dist/tatva-ui.cjs.js"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./themes/slate.css": "./dist/themes/slate.css",
+    "./themes/rose.css": "./dist/themes/rose.css",
+    "./themes/violet.css": "./dist/themes/violet.css",
+    "./themes/emerald.css": "./dist/themes/emerald.css",
+    "./themes/orange.css": "./dist/themes/orange.css",
+    "./themes/index.css": "./dist/themes/index.css"
   },
   "sideEffects": [
     "*.css"
   ],
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
+  "bin": {
+    "tatva": "./bin/tatva.mjs",
+    "tatva-ui": "./bin/tatva.mjs"
+  },
   "engines": {
     "node": ">=18.0.0"
   },
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "tsc -p tsconfig.build.json && vite build",
+    "build": "tsc -p tsconfig.build.json && vite build && node scripts/copy-theme-presets.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -47,7 +58,8 @@
     "type-check": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepublishOnly": "npm run lint && npm run type-check && npm run test && npm run build"
+    "build:registry": "node scripts/build-registry.mjs",
+    "prepublishOnly": "npm run lint && npm run type-check && npm run test && npm run build && npm run build:registry"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

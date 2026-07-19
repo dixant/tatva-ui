@@ -1,0 +1,188 @@
+{
+  "version": 1,
+  "generatedAt": "2026-07-19T13:07:19.490Z",
+  "baseUrl": "https://raw.githubusercontent.com/dixant/tatva-ui/master/registry/components",
+  "items": [
+    {
+      "name": "accordion",
+      "displayName": "Accordion",
+      "registryDependencies": []
+    },
+    {
+      "name": "alert",
+      "displayName": "Alert",
+      "registryDependencies": []
+    },
+    {
+      "name": "avatar",
+      "displayName": "Avatar",
+      "registryDependencies": []
+    },
+    {
+      "name": "badge",
+      "displayName": "Badge",
+      "registryDependencies": []
+    },
+    {
+      "name": "breadcrumb",
+      "displayName": "Breadcrumb",
+      "registryDependencies": []
+    },
+    {
+      "name": "button",
+      "displayName": "Button",
+      "registryDependencies": []
+    },
+    {
+      "name": "card",
+      "displayName": "Card",
+      "registryDependencies": []
+    },
+    {
+      "name": "checkbox",
+      "displayName": "Checkbox",
+      "registryDependencies": []
+    },
+    {
+      "name": "dataTable",
+      "displayName": "DataTable",
+      "registryDependencies": [
+        "skeleton",
+        "checkbox",
+        "pagination"
+      ]
+    },
+    {
+      "name": "divider",
+      "displayName": "Divider",
+      "registryDependencies": []
+    },
+    {
+      "name": "emptyState",
+      "displayName": "EmptyState",
+      "registryDependencies": []
+    },
+    {
+      "name": "formField",
+      "displayName": "FormField",
+      "registryDependencies": []
+    },
+    {
+      "name": "icon",
+      "displayName": "Icon",
+      "registryDependencies": []
+    },
+    {
+      "name": "input",
+      "displayName": "Input",
+      "registryDependencies": []
+    },
+    {
+      "name": "modal",
+      "displayName": "Modal",
+      "registryDependencies": []
+    },
+    {
+      "name": "multiSelect",
+      "displayName": "MultiSelect",
+      "registryDependencies": [
+        "badge",
+        "select"
+      ]
+    },
+    {
+      "name": "pagination",
+      "displayName": "Pagination",
+      "registryDependencies": []
+    },
+    {
+      "name": "radio",
+      "displayName": "Radio",
+      "registryDependencies": []
+    },
+    {
+      "name": "searchInput",
+      "displayName": "SearchInput",
+      "registryDependencies": [
+        "input",
+        "icon",
+        "spinner"
+      ]
+    },
+    {
+      "name": "select",
+      "displayName": "Select",
+      "registryDependencies": []
+    },
+    {
+      "name": "skeleton",
+      "displayName": "Skeleton",
+      "registryDependencies": []
+    },
+    {
+      "name": "spinner",
+      "displayName": "Spinner",
+      "registryDependencies": []
+    },
+    {
+      "name": "stack",
+      "displayName": "Stack",
+      "registryDependencies": []
+    },
+    {
+      "name": "tabs",
+      "displayName": "Tabs",
+      "registryDependencies": []
+    },
+    {
+      "name": "textarea",
+      "displayName": "Textarea",
+      "registryDependencies": []
+    },
+    {
+      "name": "toast",
+      "displayName": "Toast",
+      "registryDependencies": []
+    },
+    {
+      "name": "toggle",
+      "displayName": "Toggle",
+      "registryDependencies": []
+    },
+    {
+      "name": "tooltip",
+      "displayName": "Tooltip",
+      "registryDependencies": []
+    },
+    {
+      "name": "typography",
+      "displayName": "Typography",
+      "registryDependencies": []
+    },
+    {
+      "name": "tokens",
+      "displayName": "Tokens",
+      "registryDependencies": []
+    },
+    {
+      "name": "theme-light",
+      "displayName": "Theme (light)",
+      "registryDependencies": []
+    },
+    {
+      "name": "theme-dark",
+      "displayName": "Theme (dark)",
+      "registryDependencies": []
+    },
+    {
+      "name": "theme-provider",
+      "displayName": "ThemeProvider",
+      "registryDependencies": []
+    },
+    {
+      "name": "utils",
+      "displayName": "cn / vc utilities",
+      "registryDependencies": []
+    }
+  ]
+}

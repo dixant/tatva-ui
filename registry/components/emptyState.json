@@ -1,0 +1,22 @@
+{
+  "name": "emptyState",
+  "displayName": "EmptyState",
+  "type": "component",
+  "files": [
+    {
+      "name": "EmptyState.tsx",
+      "content": "import { forwardRef, type ReactNode } from 'react';\nimport { cn } from '../../utils/cn';\nimport styles from './EmptyState.module.css';\n\nexport interface EmptyStateProps {\n  icon?: ReactNode;\n  title: string;\n  description?: string;\n  action?: ReactNode;\n  className?: string;\n}\n\nexport const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(\n  function EmptyState(\n    {\n      icon,\n      title,\n      description,\n      action,\n      className,\n      'data-testid': dataTestId = 'tatva-emptystate',\n    }: EmptyStateProps & { 'data-testid'?: string },\n    ref,\n  ) {\n    return (\n      <div ref={ref} className={cn(styles.empty, className)} data-testid={dataTestId}>\n        {icon && (\n          <div className={styles.icon} aria-hidden=\"true\">\n            {icon}\n          </div>\n        )}\n        <div className={styles.title}>{title}</div>\n        {description && <div className={styles.description}>{description}</div>}\n        {action && <div className={styles.action}>{action}</div>}\n      </div>\n    );\n  },\n);\n"
+    },
+    {
+      "name": "EmptyState.module.css",
+      "content": ".empty {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: var(--tatva-space-3);\n  padding: var(--tatva-space-8) var(--tatva-space-6);\n  text-align: center;\n  font-family: var(--tatva-font-family);\n  color: var(--tatva-color-fg);\n}\n\n.icon {\n  color: var(--tatva-color-neutral-400);\n}\n\n.title {\n  font-size: var(--tatva-font-size-lg);\n  font-weight: var(--tatva-font-weight-semibold);\n}\n\n.description {\n  color: var(--tatva-color-fg-muted);\n  font-size: var(--tatva-font-size-sm);\n  max-width: 360px;\n}\n\n.action {\n  margin-top: var(--tatva-space-2);\n}\n"
+    },
+    {
+      "name": "index.ts",
+      "content": "export { EmptyState } from './EmptyState';\nexport type { EmptyStateProps } from './EmptyState';\n"
+    }
+  ],
+  "registryDependencies": [],
+  "dependencies": [],
+  "devDependencies": []
+}

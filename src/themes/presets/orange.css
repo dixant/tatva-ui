@@ -1,0 +1,13 @@
+:root,
+[data-brand='orange'] {
+  --tatva-color-primary-50: #fff7ed;
+  --tatva-color-primary-100: #ffedd5;
+  --tatva-color-primary-200: #fed7aa;
+  --tatva-color-primary-300: #fdba74;
+  --tatva-color-primary-400: #fb923c;
+  --tatva-color-primary-500: #f97316;
+  --tatva-color-primary-600: #ea580c;
+  --tatva-color-primary-700: #c2410c;
+  --tatva-color-primary-800: #9a3412;
+  --tatva-color-primary-900: #7c2d12;
+}

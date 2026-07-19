@@ -1,24 +1,22 @@
-name: Deploy Storybook to Pages
+name: Deploy site to Pages
 
 on:
   push:
     branches: [master]
   workflow_dispatch:
 
-# Grants required for actions/deploy-pages.
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Only one deploy at a time; cancel any in progress.
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
   build:
-    name: Build Storybook
+    name: Build landing + Storybook
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,16 +26,26 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
-      - name: Install dependencies
+      - name: Install
         run: npm ci
 
       - name: Build Storybook
         run: npm run build-storybook
 
+      - name: Compose site
+        run: |
+          # docs/ contains the static landing page (index.html).
+          # We copy the built Storybook underneath at /storybook/.
+          rm -rf site
+          mkdir -p site
+          cp -r docs/* site/
+          mkdir -p site/storybook
+          cp -r storybook-static/* site/storybook/
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: storybook-static
+          path: site
 
   deploy:
     name: Deploy

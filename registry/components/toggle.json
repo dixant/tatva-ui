@@ -1,0 +1,22 @@
+{
+  "name": "toggle",
+  "displayName": "Toggle",
+  "type": "component",
+  "files": [
+    {
+      "name": "Toggle.tsx",
+      "content": "import { forwardRef, useCallback, useState, type ButtonHTMLAttributes } from 'react';\nimport { cn, vc } from '../../utils/cn';\nimport styles from './Toggle.module.css';\n\nexport type ToggleSize = 'sm' | 'md';\n\nexport interface ToggleProps\n  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onChange' | 'children'> {\n  label: string;\n  checked?: boolean;\n  defaultChecked?: boolean;\n  size?: ToggleSize;\n  onChange?: (checked: boolean) => void;\n}\n\nexport const Toggle = forwardRef<HTMLButtonElement, ToggleProps>(function Toggle(\n  {\n    label,\n    checked,\n    defaultChecked = false,\n    size = 'md',\n    disabled,\n    className,\n    onChange,\n    'data-testid': dataTestId = 'tatva-toggle',\n    ...rest\n  }: ToggleProps & { 'data-testid'?: string },\n  ref,\n) {\n  const [internal, setInternal] = useState(defaultChecked);\n  const isControlled = checked !== undefined;\n  const value = isControlled ? checked : internal;\n\n  const toggle = useCallback(() => {\n    if (disabled) return;\n    const next = !value;\n    if (!isControlled) setInternal(next);\n    onChange?.(next);\n  }, [disabled, value, isControlled, onChange]);\n\n  return (\n    <button\n      ref={ref}\n      type=\"button\"\n      role=\"switch\"\n      aria-checked={value}\n      aria-disabled={disabled || undefined}\n      disabled={disabled}\n      onClick={toggle}\n      className={cn(\n        styles.toggle,\n        vc(styles, 'size', size),\n        value && styles.on,\n        disabled && styles.disabled,\n        className,\n      )}\n      data-testid={dataTestId}\n      {...rest}\n    >\n      <span className={styles.track}>\n        <span className={styles.thumb} aria-hidden=\"true\" />\n      </span>\n      <span className={styles.label}>{label}</span>\n    </button>\n  );\n});\n"
+    },
+    {
+      "name": "Toggle.module.css",
+      "content": ".toggle {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--tatva-space-2);\n  background: transparent;\n  border: none;\n  padding: 0;\n  cursor: pointer;\n  font-family: var(--tatva-font-family);\n  color: var(--tatva-color-fg);\n  font-size: var(--tatva-font-size-md);\n}\n\n.toggle:focus-visible .track {\n  box-shadow: 0 0 0 3px var(--tatva-color-primary-200);\n}\n\n.track {\n  position: relative;\n  background-color: var(--tatva-color-neutral-300);\n  border-radius: var(--tatva-radius-full);\n  transition: background-color var(--tatva-transition-fast);\n}\n\n.sizeMd .track {\n  width: 36px;\n  height: 20px;\n}\n.sizeSm .track {\n  width: 28px;\n  height: 16px;\n}\n\n.thumb {\n  position: absolute;\n  top: 2px;\n  left: 2px;\n  background-color: #ffffff;\n  border-radius: 50%;\n  transition: transform 150ms ease;\n  box-shadow: var(--tatva-shadow-sm);\n}\n\n.sizeMd .thumb {\n  width: 16px;\n  height: 16px;\n}\n.sizeSm .thumb {\n  width: 12px;\n  height: 12px;\n}\n\n.on .track {\n  background-color: var(--tatva-color-primary-600);\n}\n\n.sizeMd.on .thumb {\n  transform: translateX(16px);\n}\n.sizeSm.on .thumb {\n  transform: translateX(12px);\n}\n\n.disabled {\n  cursor: not-allowed;\n  opacity: 0.55;\n}\n\n.label {\n  line-height: var(--tatva-line-height-normal);\n}\n"
+    },
+    {
+      "name": "index.ts",
+      "content": "export { Toggle } from './Toggle';\nexport type { ToggleProps, ToggleSize } from './Toggle';\n"
+    }
+  ],
+  "registryDependencies": [],
+  "dependencies": [],
+  "devDependencies": []
+}

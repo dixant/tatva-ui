@@ -51,3 +51,6 @@ export * from './components/EmptyState';
 export * from './components/FormField';
 export * from './components/SearchInput';
 export * from './components/MultiSelect';
+
+// Blocks — prebuilt page compositions
+export * from './blocks';

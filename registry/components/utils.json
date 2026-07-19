@@ -1,0 +1,14 @@
+{
+  "name": "utils",
+  "displayName": "cn / vc utilities",
+  "type": "primitive",
+  "files": [
+    {
+      "name": "tatva/utils/cn.ts",
+      "content": "/**\n * Merge className strings, filtering out falsy values.\n *\n * @example\n *   cn('a', undefined, false && 'b', 'c') // -> 'a c'\n */\nexport function cn(\n  ...classes: (string | undefined | null | false | 0)[]\n): string {\n  return classes.filter(Boolean).join(' ');\n}\n\n/**\n * Build a CSS Modules class name from a base and a variant token.\n *\n * `vc(styles, 'variant', 'outlined')` → `styles.variantOutlined`\n *\n * Handy for the common pattern `<div className={styles[`variant_${v}`]} />`\n * where the CSS class is written in camelCase per convention.\n */\nexport function vc(\n  styles: Record<string, string>,\n  base: string,\n  value: string | undefined | null,\n): string | undefined {\n  if (!value) return undefined;\n  const key = `${base}${value[0].toUpperCase()}${value.slice(1)}`;\n  return styles[key];\n}\n"
+    }
+  ],
+  "registryDependencies": [],
+  "dependencies": [],
+  "devDependencies": []
+}

@@ -1,0 +1,22 @@
+{
+  "name": "formField",
+  "displayName": "FormField",
+  "type": "component",
+  "files": [
+    {
+      "name": "FormField.tsx",
+      "content": "import {\n  Children,\n  cloneElement,\n  isValidElement,\n  useId,\n  type ReactElement,\n  type ReactNode,\n} from 'react';\nimport { cn } from '../../utils/cn';\nimport styles from './FormField.module.css';\n\nexport interface FormFieldProps {\n  label?: string;\n  /** Explicit id to link label/child. Auto-generated otherwise. */\n  htmlFor?: string;\n  required?: boolean;\n  helperText?: string;\n  error?: string;\n  children: ReactElement;\n  className?: string;\n}\n\nexport function FormField({\n  label,\n  htmlFor,\n  required,\n  helperText,\n  error,\n  children,\n  className,\n  'data-testid': dataTestId = 'tatva-formfield',\n}: FormFieldProps & { 'data-testid'?: string }) {\n  const rid = useId();\n  const only = Children.only(children);\n  if (!isValidElement(only)) return only;\n  const childId = (only.props as { id?: string }).id;\n  const inputId = htmlFor ?? childId ?? rid;\n  const helperId = `${inputId}-helper`;\n  const errorId = `${inputId}-error`;\n  const describedBy =\n    [error ? errorId : undefined, helperText && !error ? helperId : undefined]\n      .filter(Boolean)\n      .join(' ') || undefined;\n\n  const merged = cloneElement(only, {\n    id: inputId,\n    'aria-invalid': error ? true : undefined,\n    'aria-describedby': describedBy,\n    required,\n  } as never);\n\n  return (\n    <div className={cn(styles.wrapper, className)} data-testid={dataTestId}>\n      {label && (\n        <label htmlFor={inputId} className={styles.label}>\n          {label}\n          {required && (\n            <span className={styles.required} aria-hidden=\"true\">\n              {' *'}\n            </span>\n          )}\n        </label>\n      )}\n      {merged}\n      {helperText && !error && (\n        <span id={helperId} className={styles.helper}>\n          {helperText}\n        </span>\n      )}\n      {error && (\n        <span id={errorId} className={styles.error} role=\"alert\">\n          {error}\n        </span>\n      )}\n    </div>\n  );\n}\n\n// Re-export ReactNode for consumers.\nexport type { ReactNode };\n"
+    },
+    {
+      "name": "FormField.module.css",
+      "content": ".wrapper {\n  display: flex;\n  flex-direction: column;\n  gap: var(--tatva-space-1);\n  font-family: var(--tatva-font-family);\n}\n\n.label {\n  font-size: var(--tatva-font-size-sm);\n  font-weight: var(--tatva-font-weight-medium);\n  color: var(--tatva-color-fg);\n}\n\n.required {\n  color: var(--tatva-color-error);\n}\n\n.helper {\n  font-size: var(--tatva-font-size-xs);\n  color: var(--tatva-color-fg-muted);\n}\n.error {\n  font-size: var(--tatva-font-size-xs);\n  color: var(--tatva-color-error);\n}\n"
+    },
+    {
+      "name": "index.ts",
+      "content": "export { FormField } from './FormField';\nexport type { FormFieldProps } from './FormField';\n"
+    }
+  ],
+  "registryDependencies": [],
+  "dependencies": [],
+  "devDependencies": []
+}

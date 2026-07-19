@@ -1,0 +1,17 @@
+/**
+ * Slate = the default blue-ish preset. This file exists so users can
+ * re-import it if they need to reset after temporarily switching brands.
+ */
+:root,
+[data-brand='slate'] {
+  --tatva-color-primary-50: #eff6ff;
+  --tatva-color-primary-100: #dbeafe;
+  --tatva-color-primary-200: #bfdbfe;
+  --tatva-color-primary-300: #93c5fd;
+  --tatva-color-primary-400: #60a5fa;
+  --tatva-color-primary-500: #3b82f6;
+  --tatva-color-primary-600: #2563eb;
+  --tatva-color-primary-700: #1d4ed8;
+  --tatva-color-primary-800: #1e40af;
+  --tatva-color-primary-900: #1e3a8a;
+}

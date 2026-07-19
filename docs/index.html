@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tatva UI — the small, own-your-code React design system</title>
+    <meta
+      name="description"
+      content="Tatva UI is a React + TypeScript design system with two install modes: npm install for library users, and a CLI that copies source into your project — like shadcn/ui, but with CSS Modules (no Tailwind), zero-runtime styling, and a smaller bundle."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3Eत%3C/text%3E%3C/svg%3E"
+    />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --fg: #0f172a;
+        --muted: #475569;
+        --border: #e2e8f0;
+        --primary: #2563eb;
+        --primary-hover: #1d4ed8;
+        --code-bg: #f1f5f9;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0f172a;
+          --fg: #f8fafc;
+          --muted: #cbd5e1;
+          --border: #334155;
+          --primary: #60a5fa;
+          --primary-hover: #93c5fd;
+          --code-bg: #1e293b;
+        }
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        line-height: 1.6;
+      }
+      .container { max-width: 900px; margin: 0 auto; padding: 24px; }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--border);
+      }
+      nav .logo { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 18px; }
+      nav .logo .mark {
+        width: 32px; height: 32px; border-radius: 6px;
+        background: var(--primary); color: #fff;
+        display: grid; place-items: center; font-weight: 700;
+      }
+      nav a {
+        color: var(--muted); text-decoration: none;
+        margin-left: 20px; font-size: 14px;
+      }
+      nav a:hover { color: var(--fg); }
+
+      .hero { padding: 80px 24px 40px; text-align: center; }
+      .hero h1 { font-size: clamp(36px, 6vw, 56px); margin: 0 0 16px; letter-spacing: -0.02em; }
+      .hero .tagline { font-size: 20px; color: var(--muted); max-width: 640px; margin: 0 auto 32px; }
+      .hero .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+      .btn {
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 10px 20px; border-radius: 8px;
+        font-weight: 500; text-decoration: none; font-size: 15px;
+        transition: background 150ms;
+      }
+      .btn-primary { background: var(--primary); color: #fff; }
+      .btn-primary:hover { background: var(--primary-hover); }
+      .btn-secondary { border: 1px solid var(--border); color: var(--fg); }
+      .btn-secondary:hover { background: var(--code-bg); }
+
+      section { padding: 40px 24px; }
+      section h2 { font-size: 28px; margin: 0 0 24px; text-align: center; }
+      .modes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 20px;
+      }
+      .mode {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px;
+        background: var(--bg);
+      }
+      .mode h3 { margin: 0 0 8px; font-size: 20px; }
+      .mode .desc { color: var(--muted); font-size: 15px; margin-bottom: 16px; }
+      pre {
+        background: var(--code-bg);
+        padding: 14px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      table {
+        width: 100%; border-collapse: collapse;
+        margin: 0 auto; max-width: 800px;
+        font-size: 14px;
+      }
+      th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+      th { font-weight: 600; background: var(--code-bg); }
+      td:first-child { font-weight: 500; }
+      .yes { color: #16a34a; font-weight: 600; }
+      .no  { color: #dc2626; font-weight: 600; }
+
+      footer {
+        text-align: center; padding: 40px 24px 24px;
+        color: var(--muted); font-size: 14px;
+        border-top: 1px solid var(--border);
+      }
+      footer a { color: var(--primary); }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <span class="mark">त</span>
+        <span>Tatva UI</span>
+      </div>
+      <div>
+        <a href="./storybook/">Storybook</a>
+        <a href="https://github.com/dixant/tatva-ui">GitHub</a>
+        <a href="https://www.npmjs.com/package/@dixant/tatva-ui">npm</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <h1>The small, own-your-code React design system</h1>
+      <p class="tagline">
+        29 accessible components. CSS Modules — no Tailwind, no runtime styling.
+        Two install modes: <code>npm install</code> for library users, and a CLI
+        that copies source into your project (like shadcn/ui).
+      </p>
+      <div class="cta">
+        <a href="./storybook/" class="btn btn-primary">Browse components →</a>
+        <a href="https://github.com/dixant/tatva-ui" class="btn btn-secondary">Star on GitHub</a>
+      </div>
+    </div>
+
+    <section>
+      <h2>Two ways to install</h2>
+      <div class="container">
+        <div class="modes">
+          <div class="mode">
+            <h3>1. Library mode</h3>
+            <p class="desc">Ship it as a dependency. Small (~23 KB gz JS), no config.</p>
+<pre><code>npm install @dixant/tatva-ui
+
+// App.tsx
+import { Button, ThemeProvider } from '@dixant/tatva-ui';
+import '@dixant/tatva-ui/style.css';
+
+&lt;ThemeProvider&gt;
+  &lt;Button&gt;Hello&lt;/Button&gt;
+&lt;/ThemeProvider&gt;</code></pre>
+          </div>
+          <div class="mode">
+            <h3>2. CLI mode (own your code)</h3>
+            <p class="desc">Copy component source into your project. Edit anything.</p>
+<pre><code>npx @dixant/tatva-ui init
+npx @dixant/tatva-ui add button input select
+
+# Source appears at components/tatva/*
+# Edit, customize, commit. It's your code now.</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>How it compares</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Tatva</th>
+            <th>shadcn/ui</th>
+            <th>MUI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Copy-paste CLI</td><td class="yes">yes</td><td class="yes">yes</td><td class="no">no</td></tr>
+          <tr><td>npm library</td><td class="yes">yes</td><td class="no">no</td><td class="yes">yes</td></tr>
+          <tr><td>Styling</td><td>CSS Modules</td><td>Tailwind</td><td>Emotion</td></tr>
+          <tr><td>Runtime styling cost</td><td class="yes">0</td><td class="yes">0</td><td class="no">~30 KB gz</td></tr>
+          <tr><td>Tailwind required</td><td class="yes">no</td><td class="no">yes</td><td class="yes">no</td></tr>
+          <tr><td>Bundle (JS gz)</td><td>~23 KB</td><td>—</td><td>~90 KB+</td></tr>
+          <tr><td>Prebuilt blocks</td><td class="yes">yes</td><td class="yes">yes</td><td>partial</td></tr>
+          <tr><td>Component count</td><td>29</td><td>~50</td><td>~200</td></tr>
+          <tr><td>Dark mode</td><td class="yes">built-in</td><td class="yes">yes</td><td class="yes">yes</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>What's inside</h2>
+      <div class="container">
+        <p style="text-align: center; color: var(--muted)">
+          Button · Input · Textarea · Checkbox · Radio · Select · Toggle · Typography · Icon
+          · Stack · Card · Divider · Tabs · Breadcrumb · Pagination
+          · Modal · Toast · Tooltip · Alert · Spinner · Skeleton
+          · DataTable · Badge · Avatar · Accordion · EmptyState
+          · FormField · SearchInput · MultiSelect
+          <br><br>
+          + Prebuilt Blocks: Login · Pricing · Dashboard
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      MIT © <a href="https://github.com/dixant">Dixant Sharma</a> ·
+      <a href="./storybook/">Storybook</a> ·
+      <a href="https://github.com/dixant/tatva-ui">GitHub</a>
+    </footer>
+  </body>
+</html>

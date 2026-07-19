@@ -1,0 +1,17 @@
+/**
+ * Rose brand preset. Apply by loading this file after the base stylesheet,
+ * or by scoping under `[data-brand='rose']`.
+ */
+:root,
+[data-brand='rose'] {
+  --tatva-color-primary-50: #fff1f2;
+  --tatva-color-primary-100: #ffe4e6;
+  --tatva-color-primary-200: #fecdd3;
+  --tatva-color-primary-300: #fda4af;
+  --tatva-color-primary-400: #fb7185;
+  --tatva-color-primary-500: #f43f5e;
+  --tatva-color-primary-600: #e11d48;
+  --tatva-color-primary-700: #be123c;
+  --tatva-color-primary-800: #9f1239;
+  --tatva-color-primary-900: #881337;
+}

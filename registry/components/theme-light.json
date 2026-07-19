@@ -1,0 +1,14 @@
+{
+  "name": "theme-light",
+  "displayName": "Theme (light)",
+  "type": "primitive",
+  "files": [
+    {
+      "name": "tatva/themes/light.css",
+      "content": "[data-theme='light'] {\n  --tatva-color-bg: #ffffff;\n  --tatva-color-bg-subtle: #f8fafc;\n  --tatva-color-fg: #0f172a;\n  --tatva-color-fg-muted: #475569;\n  --tatva-color-border: #e2e8f0;\n  --tatva-color-border-strong: #cbd5e1;\n  --tatva-color-overlay: rgba(15, 23, 42, 0.5);\n}\n"
+    }
+  ],
+  "registryDependencies": [],
+  "dependencies": [],
+  "devDependencies": []
+}

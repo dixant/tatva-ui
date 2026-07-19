@@ -1,0 +1,22 @@
+{
+  "name": "stack",
+  "displayName": "Stack",
+  "type": "component",
+  "files": [
+    {
+      "name": "Stack.tsx",
+      "content": "import { forwardRef, type CSSProperties, type ElementType, type ReactNode } from 'react';\nimport { cn, vc } from '../../utils/cn';\nimport styles from './Stack.module.css';\n\nexport type StackDirection = 'horizontal' | 'vertical';\nexport type StackAlign = 'start' | 'center' | 'end' | 'stretch';\nexport type StackJustify = 'start' | 'center' | 'end' | 'between' | 'around';\n\nexport interface StackProps {\n  direction?: StackDirection;\n  /** Spacing token (1–12) or any CSS length. */\n  gap?: string | number;\n  align?: StackAlign;\n  justify?: StackJustify;\n  wrap?: boolean;\n  as?: ElementType;\n  className?: string;\n  style?: CSSProperties;\n  children?: ReactNode;\n  'data-testid'?: string;\n}\n\nexport const Stack = forwardRef<HTMLElement, StackProps>(function Stack(\n  {\n    direction = 'vertical',\n    gap = '4',\n    align,\n    justify,\n    wrap = false,\n    as,\n    className,\n    style,\n    children,\n    'data-testid': dataTestId = 'tatva-stack',\n  },\n  ref,\n) {\n  const Component = (as ?? 'div') as ElementType;\n  const gapVal =\n    typeof gap === 'number' || /^\\d+$/.test(String(gap))\n      ? `var(--tatva-space-${gap})`\n      : gap;\n  return (\n    <Component\n      ref={ref}\n      className={cn(\n        styles.stack,\n        vc(styles, 'direction', direction),\n        align && vc(styles, 'align', align),\n        justify && vc(styles, 'justify', justify),\n        wrap && styles.wrap,\n        className,\n      )}\n      style={{ gap: gapVal, ...style }}\n      data-testid={dataTestId}\n    >\n      {children}\n    </Component>\n  );\n});\n"
+    },
+    {
+      "name": "Stack.module.css",
+      "content": ".stack {\n  display: flex;\n}\n\n.directionVertical { flex-direction: column; }\n.directionHorizontal { flex-direction: row; }\n\n.alignStart { align-items: flex-start; }\n.alignCenter { align-items: center; }\n.alignEnd { align-items: flex-end; }\n.alignStretch { align-items: stretch; }\n\n.justifyStart { justify-content: flex-start; }\n.justifyCenter { justify-content: center; }\n.justifyEnd { justify-content: flex-end; }\n.justifyBetween { justify-content: space-between; }\n.justifyAround { justify-content: space-around; }\n\n.wrap { flex-wrap: wrap; }\n"
+    },
+    {
+      "name": "index.ts",
+      "content": "export { Stack } from './Stack';\nexport type {\n  StackProps,\n  StackDirection,\n  StackAlign,\n  StackJustify,\n} from './Stack';\n"
+    }
+  ],
+  "registryDependencies": [],
+  "dependencies": [],
+  "devDependencies": []
+}
