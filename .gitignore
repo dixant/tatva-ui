@@ -1,5 +1,6 @@
 node_modules
 dist
+.gh-token
 coverage
 storybook-static
 .DS_Store

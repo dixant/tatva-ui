@@ -23,3 +23,11 @@ export * from './components/Select';
 export * from './components/Toggle';
 export * from './components/Typography';
 export * from './components/Icon';
+
+// Components — Phase 3 layout & nav
+export * from './components/Stack';
+export * from './components/Card';
+export * from './components/Divider';
+export * from './components/Tabs';
+export * from './components/Breadcrumb';
+export * from './components/Pagination';

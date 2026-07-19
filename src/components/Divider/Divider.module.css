@@ -1,0 +1,34 @@
+.horizontal {
+  width: 100%;
+  height: 1px;
+  background-color: var(--tatva-color-border);
+  border: none;
+}
+
+.vertical {
+  width: 1px;
+  align-self: stretch;
+  background-color: var(--tatva-color-border);
+  border: none;
+}
+
+.labeled {
+  display: flex;
+  align-items: center;
+  gap: var(--tatva-space-3);
+  color: var(--tatva-color-fg-muted);
+  font-family: var(--tatva-font-family);
+  font-size: var(--tatva-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--tatva-color-border);
+}
+
+.label {
+  flex-shrink: 0;
+}
