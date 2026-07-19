@@ -1,0 +1,107 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tatva-space-1);
+  font-family: var(--tatva-font-family);
+}
+
+.label {
+  font-size: var(--tatva-font-size-sm);
+  font-weight: var(--tatva-font-weight-medium);
+  color: var(--tatva-color-fg);
+}
+
+.control {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--tatva-space-1);
+  min-height: 40px;
+  padding: var(--tatva-space-1) var(--tatva-space-2);
+  background-color: var(--tatva-color-bg);
+  border: 1px solid var(--tatva-color-border);
+  border-radius: var(--tatva-radius-md);
+  cursor: text;
+  align-items: center;
+  transition:
+    border-color var(--tatva-transition-fast),
+    box-shadow var(--tatva-transition-fast);
+}
+
+.controlOpen,
+.control:focus-within {
+  outline: none;
+  border-color: var(--tatva-color-primary-500);
+  box-shadow: 0 0 0 3px var(--tatva-color-primary-200);
+}
+
+.hasError {
+  border-color: var(--tatva-color-error);
+}
+
+.disabled {
+  background-color: var(--tatva-color-bg-subtle);
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.input {
+  flex: 1;
+  min-width: 100px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--tatva-font-size-md);
+  color: var(--tatva-color-fg);
+  padding: 4px 0;
+}
+
+.popover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  list-style: none;
+  padding: var(--tatva-space-1) 0;
+  background-color: var(--tatva-color-bg);
+  border: 1px solid var(--tatva-color-border);
+  border-radius: var(--tatva-radius-md);
+  box-shadow: var(--tatva-shadow-lg);
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: var(--tatva-z-dropdown);
+}
+
+.option {
+  padding: var(--tatva-space-2) var(--tatva-space-3);
+  cursor: pointer;
+  color: var(--tatva-color-fg);
+  font-size: var(--tatva-font-size-md);
+}
+
+.active {
+  background-color: var(--tatva-color-primary-50);
+}
+
+.optionDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.empty {
+  padding: var(--tatva-space-3);
+  color: var(--tatva-color-fg-muted);
+  text-align: center;
+  font-size: var(--tatva-font-size-sm);
+}
+
+.helper {
+  font-size: var(--tatva-font-size-xs);
+  color: var(--tatva-color-fg-muted);
+}
+.error {
+  font-size: var(--tatva-font-size-xs);
+  color: var(--tatva-color-error);
+}

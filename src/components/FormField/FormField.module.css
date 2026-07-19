@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tatva-space-1);
+  font-family: var(--tatva-font-family);
+}
+
+.label {
+  font-size: var(--tatva-font-size-sm);
+  font-weight: var(--tatva-font-weight-medium);
+  color: var(--tatva-color-fg);
+}
+
+.required {
+  color: var(--tatva-color-error);
+}
+
+.helper {
+  font-size: var(--tatva-font-size-xs);
+  color: var(--tatva-color-fg-muted);
+}
+.error {
+  font-size: var(--tatva-font-size-xs);
+  color: var(--tatva-color-error);
+}

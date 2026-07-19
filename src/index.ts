@@ -46,3 +46,8 @@ export * from './components/Badge';
 export * from './components/Avatar';
 export * from './components/Accordion';
 export * from './components/EmptyState';
+
+// Components — Phase 6 form patterns
+export * from './components/FormField';
+export * from './components/SearchInput';
+export * from './components/MultiSelect';
