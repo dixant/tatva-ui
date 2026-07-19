@@ -1,0 +1,71 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tatva-space-2);
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--tatva-font-family);
+  color: var(--tatva-color-fg);
+  font-size: var(--tatva-font-size-md);
+}
+
+.toggle:focus-visible .track {
+  box-shadow: 0 0 0 3px var(--tatva-color-primary-200);
+}
+
+.track {
+  position: relative;
+  background-color: var(--tatva-color-neutral-300);
+  border-radius: var(--tatva-radius-full);
+  transition: background-color var(--tatva-transition-fast);
+}
+
+.sizeMd .track {
+  width: 36px;
+  height: 20px;
+}
+.sizeSm .track {
+  width: 28px;
+  height: 16px;
+}
+
+.thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  transition: transform 150ms ease;
+  box-shadow: var(--tatva-shadow-sm);
+}
+
+.sizeMd .thumb {
+  width: 16px;
+  height: 16px;
+}
+.sizeSm .thumb {
+  width: 12px;
+  height: 12px;
+}
+
+.on .track {
+  background-color: var(--tatva-color-primary-600);
+}
+
+.sizeMd.on .thumb {
+  transform: translateX(16px);
+}
+.sizeSm.on .thumb {
+  transform: translateX(12px);
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.label {
+  line-height: var(--tatva-line-height-normal);
+}

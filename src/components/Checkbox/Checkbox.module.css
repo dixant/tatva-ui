@@ -1,0 +1,70 @@
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tatva-space-2);
+  cursor: pointer;
+  font-family: var(--tatva-font-family);
+  font-size: var(--tatva-font-size-md);
+  color: var(--tatva-color-fg);
+  user-select: none;
+}
+
+.disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+.box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--tatva-color-border-strong);
+  border-radius: var(--tatva-radius-sm);
+  background-color: var(--tatva-color-bg);
+  color: transparent;
+  transition:
+    background-color var(--tatva-transition-fast),
+    border-color var(--tatva-transition-fast),
+    color var(--tatva-transition-fast);
+  flex: 0 0 auto;
+}
+
+.input:focus-visible + .box {
+  border-color: var(--tatva-color-primary-500);
+  box-shadow: 0 0 0 3px var(--tatva-color-primary-200);
+}
+
+.input:checked + .box,
+.input[aria-checked='mixed'] + .box {
+  background-color: var(--tatva-color-primary-600);
+  border-color: var(--tatva-color-primary-600);
+  color: #ffffff;
+}
+
+.label {
+  line-height: var(--tatva-line-height-normal);
+}
+
+.group {
+  display: flex;
+  gap: var(--tatva-space-3);
+}
+.orientationVertical {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.orientationHorizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}

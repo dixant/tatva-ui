@@ -12,3 +12,14 @@ export * from './themes';
 // Utils (public surface)
 export { cn } from './utils/cn';
 export type * from './utils/polymorphic';
+
+// Components — Phase 2 primitives
+export * from './components/Button';
+export * from './components/Input';
+export * from './components/Textarea';
+export * from './components/Checkbox';
+export * from './components/Radio';
+export * from './components/Select';
+export * from './components/Toggle';
+export * from './components/Typography';
+export * from './components/Icon';
