@@ -1,5 +1,5 @@
 import { forwardRef, type CSSProperties, type ElementType, type ReactNode } from 'react';
-import { cn } from '../../utils/cn';
+import { cn, vc } from '../../utils/cn';
 import styles from './Typography.module.css';
 
 export type TypographyVariant =
@@ -81,8 +81,8 @@ export const Typography = forwardRef<HTMLElement, TypographyProps>(
         data-testid={dataTestId}
         className={cn(
           styles.base,
-          styles[`variant_${variant}`],
-          weight && styles[`weight_${weight}`],
+          vc(styles, 'variant', variant),
+          weight && vc(styles, 'weight', weight),
           truncate && styles.truncate,
           className,
         )}

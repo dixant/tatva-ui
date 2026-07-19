@@ -7,7 +7,7 @@ import {
   type KeyboardEvent,
   type ReactNode,
 } from 'react';
-import { cn } from '../../utils/cn';
+import { cn, vc } from '../../utils/cn';
 import styles from './Radio.module.css';
 
 // -------------------- Context --------------------
@@ -140,7 +140,7 @@ export function RadioGroup({
     <div
       role="radiogroup"
       aria-label={label}
-      className={cn(styles.group, styles[`orientation_${orientation}`], className)}
+      className={cn(styles.group, vc(styles, 'orientation', orientation), className)}
     >
       <RadioGroupContext.Provider
         value={{

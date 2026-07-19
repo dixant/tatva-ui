@@ -22,9 +22,9 @@ describe('Icon', () => {
 
   it('applies size', () => {
     const { container } = render(<Icon name="close" size="lg" />);
-    const svg = container.querySelector('svg')!;
-    expect(svg.getAttribute('width')).toBe('24');
-    expect(svg.getAttribute('height')).toBe('24');
+    const svg = container.querySelector('svg');
+    expect(svg?.getAttribute('width')).toBe('24');
+    expect(svg?.getAttribute('height')).toBe('24');
   });
 
   it('accepts custom numeric size', () => {

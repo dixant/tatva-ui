@@ -12,7 +12,7 @@ import {
   type ReactNode,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { cn } from '../../utils/cn';
+import { cn, vc } from '../../utils/cn';
 import styles from './Tooltip.module.css';
 
 export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
@@ -154,7 +154,7 @@ export function Tooltip({
             ref={tipRef}
             id={id}
             role="tooltip"
-            className={cn(styles.tip, styles[`pos_${coords.pos}`], className)}
+            className={cn(styles.tip, vc(styles, 'pos', coords.pos), className)}
             style={{ top: coords.top, left: coords.left, position: 'absolute' }}
             data-testid="tatva-tooltip"
           >

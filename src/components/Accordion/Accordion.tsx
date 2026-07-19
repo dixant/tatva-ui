@@ -3,6 +3,7 @@ import {
   useCallback,
   useContext,
   useId,
+  useMemo,
   useState,
   type ReactNode,
 } from 'react';
@@ -65,13 +66,17 @@ function AccordionRoot({
     return Array.isArray(defaultValue) ? defaultValue : [defaultValue];
   });
   const isControlled = value !== undefined;
-  const current = isControlled
-    ? Array.isArray(value)
-      ? value
-      : value !== undefined
-        ? [value]
-        : []
-    : internal;
+  const current = useMemo(
+    () =>
+      isControlled
+        ? Array.isArray(value)
+          ? value
+          : value !== undefined
+            ? [value]
+            : []
+        : internal,
+    [isControlled, value, internal],
+  );
 
   const emit = useCallback(
     (next: string[]) => {

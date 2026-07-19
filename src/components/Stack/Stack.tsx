@@ -1,5 +1,5 @@
 import { forwardRef, type CSSProperties, type ElementType, type ReactNode } from 'react';
-import { cn } from '../../utils/cn';
+import { cn, vc } from '../../utils/cn';
 import styles from './Stack.module.css';
 
 export type StackDirection = 'horizontal' | 'vertical';
@@ -45,9 +45,9 @@ export const Stack = forwardRef<HTMLElement, StackProps>(function Stack(
       ref={ref}
       className={cn(
         styles.stack,
-        styles[`direction_${direction}`],
-        align && styles[`align_${align}`],
-        justify && styles[`justify_${justify}`],
+        vc(styles, 'direction', direction),
+        align && vc(styles, 'align', align),
+        justify && vc(styles, 'justify', justify),
         wrap && styles.wrap,
         className,
       )}

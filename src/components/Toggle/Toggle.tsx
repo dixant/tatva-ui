@@ -1,5 +1,5 @@
 import { forwardRef, useCallback, useState, type ButtonHTMLAttributes } from 'react';
-import { cn } from '../../utils/cn';
+import { cn, vc } from '../../utils/cn';
 import styles from './Toggle.module.css';
 
 export type ToggleSize = 'sm' | 'md';
@@ -49,7 +49,7 @@ export const Toggle = forwardRef<HTMLButtonElement, ToggleProps>(function Toggle
       onClick={toggle}
       className={cn(
         styles.toggle,
-        styles[`size_${size}`],
+        vc(styles, 'size', size),
         value && styles.on,
         disabled && styles.disabled,
         className,

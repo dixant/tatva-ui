@@ -70,8 +70,9 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
         type="search"
         label={label}
         placeholder={placeholder}
-        value={isControlled ? current : undefined}
-        defaultValue={!isControlled ? defaultValue : undefined}
+        // Always controlled internally so clearing via the button
+        // synchronously resets the input value.
+        value={current}
         onChange={handleChange}
         leftAddon={<Icon name="search" size="sm" aria-hidden="true" />}
         rightAddon={

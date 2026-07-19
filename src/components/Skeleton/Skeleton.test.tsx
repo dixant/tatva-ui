@@ -8,17 +8,23 @@ describe('Skeleton', () => {
     expect(screen.getByTestId('tatva-skeleton')).toBeInTheDocument();
   });
 
-  it('applies width/height', () => {
+  it('applies numeric width/height', () => {
     render(<Skeleton width={200} height={20} />);
     const el = screen.getByTestId('tatva-skeleton');
     expect(el.style.width).toBe('200px');
     expect(el.style.height).toBe('20px');
   });
 
-  it('renders multiple lines', () => {
+  it('accepts string width/height', () => {
+    render(<Skeleton width="50%" height="1rem" />);
+    const el = screen.getByTestId('tatva-skeleton');
+    expect(el.style.width).toBe('50%');
+    expect(el.style.height).toBe('1rem');
+  });
+
+  it('renders multiple text lines', () => {
     render(<Skeleton variant="text" lines={3} />);
-    const wrapper = screen.getByTestId('tatva-skeleton');
-    expect(wrapper.children.length).toBe(3);
+    expect(screen.getByTestId('tatva-skeleton').children.length).toBe(3);
   });
 
   it('applies aria-hidden', () => {
@@ -26,8 +32,18 @@ describe('Skeleton', () => {
     expect(screen.getByTestId('tatva-skeleton')).toHaveAttribute('aria-hidden', 'true');
   });
 
-  it('applies circular class', () => {
-    render(<Skeleton variant="circular" />);
-    expect(screen.getByTestId('tatva-skeleton').className).toMatch(/circular/);
+  it.each(['text', 'circular', 'rectangular'] as const)(
+    'applies %s variant class',
+    (variant) => {
+      render(<Skeleton variant={variant} />);
+      expect(screen.getByTestId('tatva-skeleton').className).toMatch(
+        new RegExp(variant),
+      );
+    },
+  );
+
+  it('applies custom className', () => {
+    render(<Skeleton className="c" />);
+    expect(screen.getByTestId('tatva-skeleton').className).toMatch(/c/);
   });
 });

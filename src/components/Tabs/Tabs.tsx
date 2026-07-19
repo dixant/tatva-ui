@@ -140,7 +140,8 @@ function Tab({ value, disabled = false, className, children }: TabProps) {
     const buttons = Array.from(
       parent.querySelectorAll<HTMLButtonElement>('[role="tab"]:not([aria-disabled="true"])'),
     );
-    const idx = buttons.indexOf(btnRef.current!);
+    if (!btnRef.current) return;
+    const idx = buttons.indexOf(btnRef.current);
     if (idx === -1) return;
     if (nextKeys.includes(e.key)) {
       e.preventDefault();

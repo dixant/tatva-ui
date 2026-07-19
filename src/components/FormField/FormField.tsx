@@ -31,19 +31,19 @@ export function FormField({
   'data-testid': dataTestId = 'tatva-formfield',
 }: FormFieldProps & { 'data-testid'?: string }) {
   const rid = useId();
-  const inputId = htmlFor ?? rid;
-  const helperId = `${inputId}-helper`;
-  const errorId = `${inputId}-error`;
-
   const only = Children.only(children);
   if (!isValidElement(only)) return only;
+  const childId = (only.props as { id?: string }).id;
+  const inputId = htmlFor ?? childId ?? rid;
+  const helperId = `${inputId}-helper`;
+  const errorId = `${inputId}-error`;
   const describedBy =
     [error ? errorId : undefined, helperText && !error ? helperId : undefined]
       .filter(Boolean)
       .join(' ') || undefined;
 
   const merged = cloneElement(only, {
-    id: (only.props as { id?: string }).id ?? inputId,
+    id: inputId,
     'aria-invalid': error ? true : undefined,
     'aria-describedby': describedBy,
     required,

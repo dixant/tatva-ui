@@ -1,5 +1,5 @@
 import { forwardRef, type ElementType, type HTMLAttributes, type ReactNode } from 'react';
-import { cn } from '../../utils/cn';
+import { cn, vc } from '../../utils/cn';
 import styles from './Card.module.css';
 
 export type CardVariant = 'elevated' | 'outlined' | 'flat';
@@ -33,8 +33,8 @@ const CardRoot = forwardRef<HTMLElement, CardProps>(function Card(
       ref={ref}
       className={cn(
         styles.card,
-        styles[`variant_${variant}`],
-        styles[`padding_${padding}`],
+        vc(styles, 'variant', variant),
+        vc(styles, 'padding', padding),
         className,
       )}
       data-testid={dataTestId}

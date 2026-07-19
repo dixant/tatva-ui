@@ -36,24 +36,23 @@ export const Default: Story = { render: () => <Demo /> };
 export const Small: Story = { render: () => <Demo size="sm" /> };
 export const Large: Story = { render: () => <Demo size="lg" /> };
 export const Fullscreen: Story = { render: () => <Demo size="fullscreen" /> };
-export const LongContent: Story = {
-  render: () => {
-    const [open, setOpen] = useState(false);
-    return (
-      <>
-        <Button onClick={() => setOpen(true)}>Long modal</Button>
-        <Modal open={open} onClose={() => setOpen(false)} title="Terms" size="md">
-          <Modal.Body>
-            {Array.from({ length: 40 }).map((_, i) => (
-              <p key={i}>Paragraph {i + 1} of a very long agreement…</p>
-            ))}
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={() => setOpen(false)}>OK</Button>
-          </Modal.Footer>
-        </Modal>
-      </>
-    );
-  },
-};
+function LongContentDemo() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Long modal</Button>
+      <Modal open={open} onClose={() => setOpen(false)} title="Terms" size="md">
+        <Modal.Body>
+          {Array.from({ length: 40 }).map((_, i) => (
+            <p key={i}>Paragraph {i + 1} of a very long agreement…</p>
+          ))}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={() => setOpen(false)}>OK</Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+}
+export const LongContent: Story = { render: () => <LongContentDemo /> };
 export const NoCloseOnBackdrop: Story = { render: () => <Demo closeOnBackdrop={false} /> };

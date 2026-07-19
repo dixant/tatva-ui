@@ -8,9 +8,21 @@ describe('Card', () => {
     expect(screen.getByText('hi')).toBeInTheDocument();
   });
 
-  it('applies variant class', () => {
-    render(<Card variant="outlined">x</Card>);
-    expect(screen.getByTestId('tatva-card').className).toMatch(/variantOutlined/);
+  it.each(['elevated', 'outlined', 'flat'] as const)(
+    'applies %s variant class',
+    (variant) => {
+      render(<Card variant={variant}>x</Card>);
+      expect(screen.getByTestId('tatva-card').className).toMatch(
+        new RegExp(`variant${variant[0].toUpperCase()}${variant.slice(1)}`),
+      );
+    },
+  );
+
+  it.each(['none', 'sm', 'md', 'lg'] as const)('applies padding %s', (p) => {
+    render(<Card padding={p}>x</Card>);
+    expect(screen.getByTestId('tatva-card').className).toMatch(
+      new RegExp(`padding${p[0].toUpperCase()}${p.slice(1)}`),
+    );
   });
 
   it('renders compound sub-components in order', () => {
@@ -21,12 +33,28 @@ describe('Card', () => {
         <Card.Footer>F</Card.Footer>
       </Card>,
     );
-    const card = screen.getByTestId('tatva-card');
-    const text = card.textContent;
-    expect(text).toBe('HBF');
+    expect(screen.getByTestId('tatva-card').textContent).toBe('HBF');
   });
 
-  it('renders as button when as=button', () => {
+  it('header divider adds separator class', () => {
+    const { container } = render(
+      <Card>
+        <Card.Header divider>H</Card.Header>
+      </Card>,
+    );
+    expect(container.querySelector('[class*="headerDivider"]')).toBeInTheDocument();
+  });
+
+  it('footer divider adds separator class', () => {
+    const { container } = render(
+      <Card>
+        <Card.Footer divider>F</Card.Footer>
+      </Card>,
+    );
+    expect(container.querySelector('[class*="footerDivider"]')).toBeInTheDocument();
+  });
+
+  it('renders as another element via as prop', () => {
     render(
       <Card as="button" onClick={() => {}}>
         click

@@ -30,7 +30,7 @@ describe('FormField', () => {
     expect(screen.getByLabelText('Name')).toHaveAttribute('aria-invalid', 'true');
   });
 
-  it('aria-describedby wires helper and error', () => {
+  it('aria-describedby links helper text', () => {
     render(
       <FormField label="Name" htmlFor="n1" helperText="Hint">
         <input />
@@ -40,5 +40,45 @@ describe('FormField', () => {
       'aria-describedby',
       'n1-helper',
     );
+  });
+
+  it('aria-describedby links error over helper', () => {
+    render(
+      <FormField label="Name" htmlFor="n1" helperText="Hint" error="Bad">
+        <input />
+      </FormField>,
+    );
+    expect(screen.getByLabelText('Name')).toHaveAttribute(
+      'aria-describedby',
+      'n1-error',
+    );
+  });
+
+  it('shows required marker', () => {
+    render(
+      <FormField label="Name" required>
+        <input />
+      </FormField>,
+    );
+    expect(screen.getByText('*', { exact: false })).toBeInTheDocument();
+  });
+
+  it('respects existing id on child', () => {
+    render(
+      <FormField label="Name">
+        <input id="existing" />
+      </FormField>,
+    );
+    expect(screen.getByLabelText('Name').id).toBeTruthy();
+  });
+
+  it('helper text alone (no error)', () => {
+    render(
+      <FormField label="Name" helperText="Hi">
+        <input />
+      </FormField>,
+    );
+    expect(screen.getByText('Hi')).toBeInTheDocument();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
   });
 });

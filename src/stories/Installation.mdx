@@ -1,0 +1,70 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Installation" />
+
+# Installation
+
+## Package
+
+```bash
+npm install @dixant/tatva-ui
+```
+
+Or with yarn/pnpm:
+
+```bash
+yarn add @dixant/tatva-ui
+pnpm add @dixant/tatva-ui
+```
+
+## Peer dependencies
+
+Tatva UI needs React 18+:
+
+```bash
+npm install react react-dom
+```
+
+## Import the stylesheet **once** at your app entry
+
+The library ships one CSS file containing tokens, themes, and component styles. Import it once at the top of your entry file:
+
+```tsx
+import '@dixant/tatva-ui/style.css';
+```
+
+Do **not** import it inside individual components — that causes duplicate CSS.
+
+## Minimal usage
+
+```tsx
+import { ThemeProvider, Button } from '@dixant/tatva-ui';
+import '@dixant/tatva-ui/style.css';
+
+export function App() {
+  return (
+    <ThemeProvider defaultTheme="light">
+      <Button variant="primary">Hello, Tatva</Button>
+    </ThemeProvider>
+  );
+}
+```
+
+`ThemeProvider` is required if you want dark mode or `useTheme()`. For static light-only apps you can drop it — tokens still apply.
+
+## TypeScript
+
+Type definitions ship with the package. No `@types/*` install needed. All component prop interfaces are exported (`ButtonProps`, `InputProps`, etc.).
+
+## Server-side rendering (SSR)
+
+The library is safe to import at module top-level in Next.js, Remix, and other SSR frameworks. All DOM-touching effects run in `useEffect` / `useLayoutEffect`.
+
+## Bundle size
+
+At the time of the initial release:
+
+- ES module bundle: ~23 KB gzipped
+- CSS: ~7 KB gzipped
+
+Tree-shaking is preserved via `sideEffects: ['*.css']` in `package.json` — only components you import are included in your final bundle.

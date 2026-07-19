@@ -1,0 +1,99 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Theming" />
+
+# Theming
+
+Tatva UI is styled with CSS Modules on top of CSS Custom Properties (variables). Every color, spacing value, font size, radius, and shadow is a token you can override in your own stylesheet — no build step, no runtime cost.
+
+## Light & dark modes
+
+Wrap your app in `ThemeProvider`. It sets `data-theme="light"` or `"dark"` on `<html>`, and the shipped `light.css` / `dark.css` swap the surface tokens accordingly.
+
+```tsx
+import { ThemeProvider } from '@dixant/tatva-ui';
+
+<ThemeProvider defaultTheme="dark" storageKey="my-app-theme">
+  <App />
+</ThemeProvider>
+```
+
+Options:
+
+- `defaultTheme` — `"light"` (default) or `"dark"`.
+- `storageKey` — if set, the theme is persisted to `localStorage`.
+- `respectSystemPreference` — when `true` (default), initial theme falls back to `prefers-color-scheme` when neither a stored value nor an explicit default is provided.
+
+## Toggling programmatically
+
+```tsx
+import { useTheme } from '@dixant/tatva-ui';
+
+function ThemeSwitcher() {
+  const { theme, toggleTheme } = useTheme();
+  return (
+    <button onClick={toggleTheme}>
+      Switch to {theme === 'dark' ? 'light' : 'dark'}
+    </button>
+  );
+}
+```
+
+## Overriding tokens (brand color, etc.)
+
+All tokens live under `:root` and per-theme selectors. Override them in your own CSS after Tatva's stylesheet:
+
+```css
+/* your-brand.css — imported after '@dixant/tatva-ui/style.css' */
+:root {
+  --tatva-color-primary-500: #10b981;  /* your brand green */
+  --tatva-color-primary-600: #059669;
+  --tatva-color-primary-700: #047857;
+}
+
+[data-theme='dark'] {
+  --tatva-color-bg: #08080b;
+  --tatva-color-fg: #f5f5f7;
+}
+```
+
+Because every component references the tokens via `var(--…)`, your override propagates everywhere instantly — including into stories and demos in Storybook.
+
+## Available token categories
+
+- **Colors** — `--tatva-color-primary-{50…900}`, `--tatva-color-neutral-{0…900}`, `--tatva-color-{success,error,warning,info}`, and surface tokens `--tatva-color-{bg,bg-subtle,fg,fg-muted,border,border-strong,overlay}`.
+- **Spacing** — `--tatva-space-{0…12}` (4 px grid).
+- **Typography** — `--tatva-font-family`, `--tatva-font-size-{xs…4xl}`, `--tatva-font-weight-{normal,medium,semibold,bold}`, `--tatva-line-height-{tight,normal,relaxed}`.
+- **Radii** — `--tatva-radius-{sm,md,lg,xl,full}`.
+- **Shadows** — `--tatva-shadow-{sm,md,lg,xl}`.
+- **Motion** — `--tatva-transition-{fast,base,slow}`.
+- **Z-index** — `--tatva-z-{dropdown,sticky,overlay,modal,popover,toast,tooltip}`.
+
+You can also import token names as TypeScript constants:
+
+```tsx
+import { colors, spacing, radii } from '@dixant/tatva-ui';
+
+<div style={{ color: colors.primary[600], padding: spacing[4] }} />
+```
+
+Each constant is the CSS `var(--…)` string, so the value stays theme-reactive.
+
+## Custom themes
+
+`data-theme` accepts any string, so you can define your own:
+
+```css
+[data-theme='hc-light'] {
+  --tatva-color-fg: #000;
+  --tatva-color-bg: #fff;
+  --tatva-color-border: #000;
+}
+```
+
+Then set it explicitly:
+
+```tsx
+const { setTheme } = useTheme();
+setTheme('hc-light');
+```

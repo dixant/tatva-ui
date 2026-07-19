@@ -1,5 +1,5 @@
 import { forwardRef, type ReactNode } from 'react';
-import { cn } from '../../utils/cn';
+import { cn, vc } from '../../utils/cn';
 import styles from './Alert.module.css';
 
 export type AlertVariant = 'info' | 'success' | 'warning' | 'error';
@@ -39,7 +39,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
     <div
       ref={ref}
       role={role}
-      className={cn(styles.alert, styles[`variant_${variant}`], className)}
+      className={cn(styles.alert, vc(styles, 'variant', variant), className)}
       data-testid={dataTestId}
     >
       <span className={styles.icon} aria-hidden="true">

@@ -1,5 +1,5 @@
 import { forwardRef, type ElementType, type ReactElement, type ReactNode, type Ref } from 'react';
-import { cn } from '../../utils/cn';
+import { cn, vc } from '../../utils/cn';
 import type { PolymorphicComponentPropsWithRef } from '../../utils/polymorphic';
 import styles from './Button.module.css';
 
@@ -85,8 +85,8 @@ function ButtonImpl(
       ref={ref}
       className={cn(
         styles.button,
-        styles[`variant_${variant}`],
-        styles[`size_${size}`],
+        vc(styles, 'variant', variant),
+        vc(styles, 'size', size),
         fullWidth && styles.fullWidth,
         loading && styles.loading,
         className,

@@ -1,5 +1,5 @@
 import { Children, cloneElement, forwardRef, isValidElement, useState, type ReactElement, type ReactNode } from 'react';
-import { cn } from '../../utils/cn';
+import { cn, vc } from '../../utils/cn';
 import styles from './Avatar.module.css';
 
 export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -82,7 +82,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       )}
       {status && (
         <span
-          className={cn(styles.status, styles[`status_${status}`])}
+          className={cn(styles.status, vc(styles, 'status', status))}
           aria-label={`Status: ${status}`}
         />
       )}

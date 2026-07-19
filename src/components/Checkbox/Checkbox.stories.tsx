@@ -16,28 +16,27 @@ export const Checked: Story = { args: { defaultChecked: true } };
 export const Indeterminate: Story = { args: { indeterminate: true } };
 export const Disabled: Story = { args: { disabled: true } };
 
-export const GroupVertical: StoryObj = {
-  render: () => {
-    const [v, setV] = useState<string[]>(['apple']);
-    return (
-      <CheckboxGroup value={v} onChange={setV} label="Fruits">
-        <Checkbox label="Apple" value="apple" />
-        <Checkbox label="Banana" value="banana" />
-        <Checkbox label="Cherry" value="cherry" />
-      </CheckboxGroup>
-    );
-  },
-};
+function VerticalGroupDemo() {
+  const [v, setV] = useState<string[]>(['apple']);
+  return (
+    <CheckboxGroup value={v} onChange={setV} label="Fruits">
+      <Checkbox label="Apple" value="apple" />
+      <Checkbox label="Banana" value="banana" />
+      <Checkbox label="Cherry" value="cherry" />
+    </CheckboxGroup>
+  );
+}
 
-export const GroupHorizontal: StoryObj = {
-  render: () => {
-    const [v, setV] = useState<string[]>([]);
-    return (
-      <CheckboxGroup value={v} onChange={setV} orientation="horizontal" label="Sizes">
-        <Checkbox label="S" value="s" />
-        <Checkbox label="M" value="m" />
-        <Checkbox label="L" value="l" />
-      </CheckboxGroup>
-    );
-  },
-};
+function HorizontalGroupDemo() {
+  const [v, setV] = useState<string[]>([]);
+  return (
+    <CheckboxGroup value={v} onChange={setV} orientation="horizontal" label="Sizes">
+      <Checkbox label="S" value="s" />
+      <Checkbox label="M" value="m" />
+      <Checkbox label="L" value="l" />
+    </CheckboxGroup>
+  );
+}
+
+export const GroupVertical: StoryObj = { render: () => <VerticalGroupDemo /> };
+export const GroupHorizontal: StoryObj = { render: () => <HorizontalGroupDemo /> };

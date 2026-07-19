@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { cn } from '../../utils/cn';
+import { cn, vc } from '../../utils/cn';
 import styles from './Toast.module.css';
 
 export type ToastVariant = 'success' | 'error' | 'warning' | 'info';
@@ -119,7 +119,7 @@ export function ToastProvider({
       {typeof document !== 'undefined' &&
         createPortal(
           <div
-            className={cn(styles.container, styles[`position_${position}`])}
+            className={cn(styles.container, vc(styles, 'position', position))}
             aria-live="polite"
             role="status"
           >
@@ -128,7 +128,7 @@ export function ToastProvider({
               return (
                 <div
                   key={t.id}
-                  className={cn(styles.toast, styles[`variant_${variant}`])}
+                  className={cn(styles.toast, vc(styles, 'variant', variant))}
                   role={variant === 'error' ? 'alert' : 'status'}
                   onMouseEnter={() => clearTimer(t.id)}
                   onMouseLeave={() => startTimer(t.id, t.duration ?? 5000)}

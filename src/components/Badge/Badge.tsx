@@ -1,5 +1,5 @@
 import { forwardRef, type ReactNode } from 'react';
-import { cn } from '../../utils/cn';
+import { cn, vc } from '../../utils/cn';
 import styles from './Badge.module.css';
 
 export type BadgeVariant = 'solid' | 'outline' | 'subtle';
@@ -34,9 +34,9 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
       ref={ref}
       className={cn(
         styles.badge,
-        styles[`variant_${variant}`],
-        styles[`color_${color}`],
-        styles[`size_${size}`],
+        vc(styles, 'variant', variant),
+        vc(styles, 'color', color),
+        vc(styles, 'size', size),
         className,
       )}
       data-testid={dataTestId}

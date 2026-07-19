@@ -8,7 +8,7 @@ import {
   type InputHTMLAttributes,
   type ReactNode,
 } from 'react';
-import { cn } from '../../utils/cn';
+import { cn, vc } from '../../utils/cn';
 import styles from './Checkbox.module.css';
 
 // -------------------- CheckboxGroupContext --------------------
@@ -151,7 +151,7 @@ export function CheckboxGroup({
     <div
       role="group"
       aria-label={label}
-      className={cn(styles.group, styles[`orientation_${orientation}`], className)}
+      className={cn(styles.group, vc(styles, 'orientation', orientation), className)}
     >
       <CheckboxGroupContext.Provider value={{ value, onToggle, disabled }}>
         {children}

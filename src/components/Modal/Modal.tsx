@@ -8,7 +8,7 @@ import {
   type ReactNode,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { cn } from '../../utils/cn';
+import { cn, vc } from '../../utils/cn';
 import styles from './Modal.module.css';
 
 // -------------------- Context --------------------
@@ -124,7 +124,7 @@ function ModalRoot({
           aria-modal="true"
           aria-labelledby={title ? titleId : undefined}
           tabIndex={-1}
-          className={cn(styles.content, styles[`size_${size}`], className)}
+          className={cn(styles.content, vc(styles, 'size', size), className)}
           onClick={(e) => e.stopPropagation()}
           data-testid="tatva-modal"
         >
