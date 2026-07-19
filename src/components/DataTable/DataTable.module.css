@@ -1,0 +1,107 @@
+.wrapper {
+  font-family: var(--tatva-font-family);
+  color: var(--tatva-color-fg);
+  border: 1px solid var(--tatva-color-border);
+  border-radius: var(--tatva-radius-lg);
+  overflow: hidden;
+  background-color: var(--tatva-color-bg);
+}
+
+.scroll {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--tatva-font-size-sm);
+}
+
+.sticky thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--tatva-color-bg-subtle);
+}
+
+.table thead th {
+  background-color: var(--tatva-color-bg-subtle);
+  color: var(--tatva-color-fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: var(--tatva-font-size-xs);
+  padding: var(--tatva-space-2) var(--tatva-space-3);
+  border-bottom: 1px solid var(--tatva-color-border);
+  font-weight: var(--tatva-font-weight-semibold);
+}
+
+.th {
+  vertical-align: middle;
+}
+
+.sortBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tatva-space-1);
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+.sortBtn:hover {
+  color: var(--tatva-color-fg);
+}
+.sortIcon {
+  color: var(--tatva-color-fg-muted);
+  font-size: 10px;
+}
+
+.table tbody td {
+  padding: var(--tatva-space-3);
+  border-bottom: 1px solid var(--tatva-color-border);
+  vertical-align: middle;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background-color: var(--tatva-color-neutral-50);
+}
+
+.selectedRow {
+  background-color: var(--tatva-color-primary-50);
+}
+.selectedRow:hover {
+  background-color: var(--tatva-color-primary-100);
+}
+
+.checkboxCell {
+  width: 40px;
+  padding: var(--tatva-space-2) var(--tatva-space-3);
+}
+
+.td {
+  color: var(--tatva-color-fg);
+}
+
+.empty {
+  text-align: center;
+  padding: var(--tatva-space-8);
+  color: var(--tatva-color-fg-muted);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: var(--tatva-space-3);
+  border-top: 1px solid var(--tatva-color-border);
+  background-color: var(--tatva-color-bg-subtle);
+}

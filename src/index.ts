@@ -39,3 +39,10 @@ export * from './components/Tooltip';
 export * from './components/Alert';
 export * from './components/Spinner';
 export * from './components/Skeleton';
+
+// Components — Phase 5 data display
+export * from './components/DataTable';
+export * from './components/Badge';
+export * from './components/Avatar';
+export * from './components/Accordion';
+export * from './components/EmptyState';

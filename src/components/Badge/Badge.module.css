@@ -1,0 +1,64 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tatva-space-1);
+  border-radius: var(--tatva-radius-full);
+  font-family: var(--tatva-font-family);
+  font-weight: var(--tatva-font-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.sizeSm {
+  padding: 2px var(--tatva-space-2);
+  font-size: var(--tatva-font-size-xs);
+}
+.sizeMd {
+  padding: 4px var(--tatva-space-2);
+  font-size: var(--tatva-font-size-sm);
+}
+
+/* Solid */
+.variantSolid.colorPrimary { background: var(--tatva-color-primary-600); color: #fff; }
+.variantSolid.colorSuccess { background: var(--tatva-color-success); color: #fff; }
+.variantSolid.colorError { background: var(--tatva-color-error); color: #fff; }
+.variantSolid.colorWarning { background: var(--tatva-color-warning); color: #fff; }
+.variantSolid.colorInfo { background: var(--tatva-color-info); color: #fff; }
+.variantSolid.colorNeutral { background: var(--tatva-color-neutral-500); color: #fff; }
+
+/* Subtle */
+.variantSubtle.colorPrimary { background: var(--tatva-color-primary-100); color: var(--tatva-color-primary-800); }
+.variantSubtle.colorSuccess { background: var(--tatva-color-success-bg); color: var(--tatva-color-success); }
+.variantSubtle.colorError { background: var(--tatva-color-error-bg); color: var(--tatva-color-error); }
+.variantSubtle.colorWarning { background: var(--tatva-color-warning-bg); color: var(--tatva-color-warning); }
+.variantSubtle.colorInfo { background: var(--tatva-color-info-bg); color: var(--tatva-color-info); }
+.variantSubtle.colorNeutral { background: var(--tatva-color-neutral-100); color: var(--tatva-color-neutral-700); }
+
+/* Outline */
+.variantOutline {
+  background: transparent;
+  border: 1px solid;
+}
+.variantOutline.colorPrimary { border-color: var(--tatva-color-primary-500); color: var(--tatva-color-primary-700); }
+.variantOutline.colorSuccess { border-color: var(--tatva-color-success); color: var(--tatva-color-success); }
+.variantOutline.colorError { border-color: var(--tatva-color-error); color: var(--tatva-color-error); }
+.variantOutline.colorWarning { border-color: var(--tatva-color-warning); color: var(--tatva-color-warning); }
+.variantOutline.colorInfo { border-color: var(--tatva-color-info); color: var(--tatva-color-info); }
+.variantOutline.colorNeutral { border-color: var(--tatva-color-neutral-400); color: var(--tatva-color-neutral-700); }
+
+.remove {
+  background: transparent;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 2px;
+  border-radius: var(--tatva-radius-sm);
+  opacity: 0.85;
+}
+.remove:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.1);
+}
