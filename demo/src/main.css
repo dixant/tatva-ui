@@ -1,0 +1,9 @@
+html, body, #root {
+  margin: 0;
+  height: 100%;
+  background-color: var(--tatva-color-bg);
+  color: var(--tatva-color-fg);
+  font-family: var(--tatva-font-family);
+}
+
+* { box-sizing: border-box; }
