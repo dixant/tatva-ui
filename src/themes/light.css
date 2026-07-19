@@ -1,0 +1,9 @@
+[data-theme='light'] {
+  --tatva-color-bg: #ffffff;
+  --tatva-color-bg-subtle: #f8fafc;
+  --tatva-color-fg: #0f172a;
+  --tatva-color-fg-muted: #475569;
+  --tatva-color-border: #e2e8f0;
+  --tatva-color-border-strong: #cbd5e1;
+  --tatva-color-overlay: rgba(15, 23, 42, 0.5);
+}

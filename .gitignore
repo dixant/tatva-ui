@@ -1,0 +1,9 @@
+node_modules
+dist
+coverage
+storybook-static
+.DS_Store
+*.log
+.vite
+demo/dist
+demo/node_modules

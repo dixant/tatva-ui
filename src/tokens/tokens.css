@@ -1,0 +1,119 @@
+/**
+ * Tatva UI Design Tokens
+ * Global CSS custom properties. Consumers import once at app root:
+ *   import '@dixant/tatva-ui/style.css';
+ */
+:root {
+  /* ---------- Colors: Primary (blue scale) ---------- */
+  --tatva-color-primary-50: #eff6ff;
+  --tatva-color-primary-100: #dbeafe;
+  --tatva-color-primary-200: #bfdbfe;
+  --tatva-color-primary-300: #93c5fd;
+  --tatva-color-primary-400: #60a5fa;
+  --tatva-color-primary-500: #3b82f6;
+  --tatva-color-primary-600: #2563eb;
+  --tatva-color-primary-700: #1d4ed8;
+  --tatva-color-primary-800: #1e40af;
+  --tatva-color-primary-900: #1e3a8a;
+
+  /* ---------- Colors: Neutral (gray scale) ---------- */
+  --tatva-color-neutral-0: #ffffff;
+  --tatva-color-neutral-50: #f8fafc;
+  --tatva-color-neutral-100: #f1f5f9;
+  --tatva-color-neutral-200: #e2e8f0;
+  --tatva-color-neutral-300: #cbd5e1;
+  --tatva-color-neutral-400: #94a3b8;
+  --tatva-color-neutral-500: #64748b;
+  --tatva-color-neutral-600: #475569;
+  --tatva-color-neutral-700: #334155;
+  --tatva-color-neutral-800: #1e293b;
+  --tatva-color-neutral-900: #0f172a;
+
+  /* ---------- Colors: Semantic ---------- */
+  --tatva-color-success: #16a34a;
+  --tatva-color-success-bg: #dcfce7;
+  --tatva-color-error: #dc2626;
+  --tatva-color-error-bg: #fee2e2;
+  --tatva-color-warning: #d97706;
+  --tatva-color-warning-bg: #fef3c7;
+  --tatva-color-info: #0284c7;
+  --tatva-color-info-bg: #e0f2fe;
+
+  /* ---------- Surface (theme-swappable) ---------- */
+  --tatva-color-bg: #ffffff;
+  --tatva-color-bg-subtle: #f8fafc;
+  --tatva-color-fg: #0f172a;
+  --tatva-color-fg-muted: #475569;
+  --tatva-color-border: #e2e8f0;
+  --tatva-color-border-strong: #cbd5e1;
+  --tatva-color-overlay: rgba(15, 23, 42, 0.5);
+
+  /* ---------- Spacing (4px grid) ---------- */
+  --tatva-space-0: 0;
+  --tatva-space-1: 4px;
+  --tatva-space-2: 8px;
+  --tatva-space-3: 12px;
+  --tatva-space-4: 16px;
+  --tatva-space-5: 20px;
+  --tatva-space-6: 24px;
+  --tatva-space-7: 28px;
+  --tatva-space-8: 32px;
+  --tatva-space-9: 36px;
+  --tatva-space-10: 40px;
+  --tatva-space-11: 44px;
+  --tatva-space-12: 48px;
+
+  /* ---------- Typography ---------- */
+  --tatva-font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --tatva-font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco,
+    'Cascadia Mono', 'Courier New', monospace;
+
+  --tatva-font-size-xs: 12px;
+  --tatva-font-size-sm: 14px;
+  --tatva-font-size-md: 16px;
+  --tatva-font-size-lg: 18px;
+  --tatva-font-size-xl: 20px;
+  --tatva-font-size-2xl: 24px;
+  --tatva-font-size-3xl: 30px;
+  --tatva-font-size-4xl: 36px;
+
+  --tatva-font-weight-normal: 400;
+  --tatva-font-weight-medium: 500;
+  --tatva-font-weight-semibold: 600;
+  --tatva-font-weight-bold: 700;
+
+  --tatva-line-height-tight: 1.25;
+  --tatva-line-height-normal: 1.5;
+  --tatva-line-height-relaxed: 1.75;
+
+  /* ---------- Shadows ---------- */
+  --tatva-shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --tatva-shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.1),
+    0 2px 4px -2px rgba(15, 23, 42, 0.1);
+  --tatva-shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1),
+    0 4px 6px -4px rgba(15, 23, 42, 0.1);
+  --tatva-shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1),
+    0 8px 10px -6px rgba(15, 23, 42, 0.1);
+
+  /* ---------- Radii ---------- */
+  --tatva-radius-sm: 4px;
+  --tatva-radius-md: 6px;
+  --tatva-radius-lg: 8px;
+  --tatva-radius-xl: 12px;
+  --tatva-radius-full: 9999px;
+
+  /* ---------- Motion ---------- */
+  --tatva-transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --tatva-transition-base: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --tatva-transition-slow: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ---------- Z-index ---------- */
+  --tatva-z-dropdown: 1000;
+  --tatva-z-sticky: 1100;
+  --tatva-z-overlay: 1200;
+  --tatva-z-modal: 1300;
+  --tatva-z-popover: 1400;
+  --tatva-z-toast: 1500;
+  --tatva-z-tooltip: 1600;
+}

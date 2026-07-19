@@ -1,0 +1,17 @@
+src
+.storybook
+demo
+tests
+storybook-static
+coverage
+*.test.*
+*.stories.*
+.github
+.editorconfig
+.prettierrc
+.nvmrc
+eslint.config.mjs
+tsconfig.json
+tsconfig.build.json
+vite.config.ts
+vitest.config.ts

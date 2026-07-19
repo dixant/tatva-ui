@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Introduction" />
+
+# Tatva UI
+
+**Tatva** (तत्व) means _element_ or _essence_ in Sanskrit — a fitting name for
+a library of building-block UI elements.
+
+Tatva UI is a production-quality React + TypeScript design system built for
+enterprise applications. Zero-runtime styling (CSS Modules + CSS custom
+properties), full TypeScript, WCAG 2.1 AA accessibility, and 80%+ test
+coverage on every component.
+
+## Installation
+
+```bash
+npm install @dixant/tatva-ui
+```
+
+## Quick Start
+
+```tsx
+import { ThemeProvider, Button } from '@dixant/tatva-ui';
+import '@dixant/tatva-ui/style.css';
+
+export function App() {
+  return (
+    <ThemeProvider defaultTheme="light">
+      <Button variant="primary">Hello, Tatva</Button>
+    </ThemeProvider>
+  );
+}
+```
+
+## Theming
+
+Wrap your app in `<ThemeProvider>`. Toggle between light and dark modes via
+`useTheme()`. All tokens are CSS custom properties — customize by overriding
+them in your own stylesheet.
+
+## Categories
+
+- **Primitives** — Button, Input, Select, Checkbox, Radio, Toggle, Typography, Icon
+- **Layout** — Stack, Card, Divider, Tabs, Breadcrumb, Pagination
+- **Feedback** — Modal, Toast, Tooltip, Alert, Spinner, Skeleton
+- **Data Display** — DataTable, Badge, Avatar, Accordion, EmptyState
+- **Forms** — FormField, SearchInput, MultiSelect
