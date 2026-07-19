@@ -1,9 +1,6 @@
-import { forwardRef, type ElementType, type ReactNode } from 'react';
+import { forwardRef, type ElementType, type ReactElement, type ReactNode, type Ref } from 'react';
 import { cn } from '../../utils/cn';
-import type {
-  PolymorphicComponentPropsWithRef,
-  PolymorphicRef,
-} from '../../utils/polymorphic';
+import type { PolymorphicComponentPropsWithRef } from '../../utils/polymorphic';
 import styles from './Button.module.css';
 
 export type ButtonVariant =
@@ -60,7 +57,7 @@ function Spinner({ size }: { size: ButtonSize }) {
   );
 }
 
-function ButtonImpl<C extends ElementType = 'button'>(
+function ButtonImpl(
   {
     as,
     variant = 'primary',
@@ -76,8 +73,8 @@ function ButtonImpl<C extends ElementType = 'button'>(
     type,
     'data-testid': dataTestId = 'tatva-button',
     ...rest
-  }: ButtonProps<C>,
-  ref: PolymorphicRef<C>,
+  }: ButtonProps,
+  ref: Ref<Element>,
 ) {
   const Component = (as ?? 'button') as ElementType;
   const isNativeButton = Component === 'button';
@@ -131,8 +128,8 @@ function ButtonImpl<C extends ElementType = 'button'>(
  * Button — versatile action element. Polymorphic (renders as any element via `as`).
  * See ButtonProps for the full API.
  */
-export const Button = forwardRef(ButtonImpl) as <
+export const Button = forwardRef(ButtonImpl) as unknown as <
   C extends ElementType = 'button',
 >(
   props: ButtonProps<C>,
-) => React.ReactElement | null;
+) => ReactElement | null;

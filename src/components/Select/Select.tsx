@@ -132,13 +132,6 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
       setActiveIndex(next);
     };
 
-    const handleTriggerKey = (e: KeyboardEvent<HTMLButtonElement>) => {
-      if (['Enter', ' ', 'ArrowDown', 'ArrowUp'].includes(e.key)) {
-        e.preventDefault();
-        setOpen(true);
-      }
-    };
-
     const handleListKey = (e: KeyboardEvent) => {
       if (e.key === 'ArrowDown') {
         e.preventDefault();
@@ -164,6 +157,20 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
             ? startIdx
             : flat.findIndex((o) => o.label.toLowerCase().startsWith(k));
         if (idx !== -1) setActiveIndex(idx);
+      }
+    };
+
+    const handleTriggerKey = (e: KeyboardEvent<HTMLButtonElement>) => {
+      if (e.key === 'Escape' && open) {
+        e.preventDefault();
+        setOpen(false);
+        return;
+      }
+      if (!open && ['Enter', ' ', 'ArrowDown', 'ArrowUp'].includes(e.key)) {
+        e.preventDefault();
+        setOpen(true);
+      } else if (open) {
+        handleListKey(e as unknown as KeyboardEvent);
       }
     };
 

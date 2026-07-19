@@ -11,7 +11,7 @@ type Story = StoryObj<typeof Accordion>;
 
 export const Single: Story = {
   render: () => (
-    <Accordion type="single" defaultValue="one" style={{ maxWidth: 480 } as never}>
+    <Accordion type="single" defaultValue="one" className="story-max-w">
       <Accordion.Item value="one">
         <Accordion.Trigger>Section one</Accordion.Trigger>
         <Accordion.Content>Content one.</Accordion.Content>
