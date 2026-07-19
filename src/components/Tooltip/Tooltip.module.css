@@ -1,0 +1,32 @@
+.tip {
+  z-index: var(--tatva-z-tooltip);
+  background-color: var(--tatva-color-neutral-900);
+  color: #ffffff;
+  padding: var(--tatva-space-1) var(--tatva-space-2);
+  border-radius: var(--tatva-radius-sm);
+  font-family: var(--tatva-font-family);
+  font-size: var(--tatva-font-size-xs);
+  line-height: var(--tatva-line-height-tight);
+  max-width: 240px;
+  box-shadow: var(--tatva-shadow-md);
+  opacity: 0;
+  animation: tatva-tooltip-in 150ms ease forwards;
+  pointer-events: none;
+}
+
+@keyframes tatva-tooltip-in {
+  to { opacity: 1; }
+}
+
+.arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: var(--tatva-color-neutral-900);
+  transform: rotate(45deg);
+}
+
+.posTop .arrow { bottom: -4px; left: 50%; margin-left: -4px; }
+.posBottom .arrow { top: -4px; left: 50%; margin-left: -4px; }
+.posLeft .arrow { right: -4px; top: 50%; margin-top: -4px; }
+.posRight .arrow { left: -4px; top: 50%; margin-top: -4px; }

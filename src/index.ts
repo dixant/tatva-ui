@@ -31,3 +31,11 @@ export * from './components/Divider';
 export * from './components/Tabs';
 export * from './components/Breadcrumb';
 export * from './components/Pagination';
+
+// Components — Phase 4 feedback & overlay
+export * from './components/Modal';
+export * from './components/Toast';
+export * from './components/Tooltip';
+export * from './components/Alert';
+export * from './components/Spinner';
+export * from './components/Skeleton';
