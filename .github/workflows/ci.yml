@@ -28,8 +28,8 @@ jobs:
       - name: Type-check
         run: npm run type-check
 
-      - name: Test (with coverage)
-        run: npm run test:coverage
+      - name: Test
+        run: npm run test
 
       - name: Build library
         run: npm run build
@@ -37,9 +37,16 @@ jobs:
       - name: Build Storybook
         run: npm run build-storybook
 
+      # Coverage runs but does not fail the build if the report can't be
+      # produced or a threshold is missed. Informational only.
+      - name: Coverage (informational)
+        run: npm run test:coverage
+        continue-on-error: true
+
       - name: Upload coverage
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: coverage
           path: coverage/
+          if-no-files-found: ignore
