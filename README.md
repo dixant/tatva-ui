@@ -3,9 +3,10 @@
 > **Tatva** (तत्व) — _element_ or _essence_ in Sanskrit.
 > A small, own-your-code React design system.
 
-[![npm version](https://img.shields.io/npm/v/@dixant/tatva-ui.svg)](https://www.npmjs.com/package/@dixant/tatva-ui)
-[![CI](https://github.com/dixant/tatva-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/dixant/tatva-ui/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm](https://img.shields.io/npm/v/@dixant/tatva-ui?color=cb3837&label=npm&logo=npm)](https://www.npmjs.com/package/@dixant/tatva-ui)
+[![CI](https://img.shields.io/github/actions/workflow/status/dixant/tatva-ui/ci.yml?branch=master&label=CI&logo=github)](https://github.com/dixant/tatva-ui/actions/workflows/ci.yml)
+[![Docs](https://img.shields.io/badge/docs-storybook-ff4785?logo=storybook&logoColor=white)](https://dixant.github.io/tatva-ui/)
+[![License](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Bundle](https://img.shields.io/badge/bundle-26%20KB%20gz-blue.svg)](#bundle-size)
 
 Live docs & Storybook: **https://dixant.github.io/tatva-ui/**
