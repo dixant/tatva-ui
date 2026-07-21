@@ -11,7 +11,15 @@ type Story = StoryObj<typeof SearchInput>;
 
 export const Default: Story = { args: { label: 'Search users' } };
 export const WithDebounce: Story = {
-  args: { label: 'Search', debounceMs: 500, onSearch: (v) => console.log('search:', v) },
+  args: {
+    label: 'Search',
+    debounceMs: 500,
+    onSearch: (v) => console.log('search:', v),
+  },
 };
-export const Loading: Story = { args: { label: 'Search', loading: true, defaultValue: 'react' } };
-export const WithValue: Story = { args: { label: 'Search', defaultValue: 'query' } };
+export const Loading: Story = {
+  args: { label: 'Search', loading: true, defaultValue: 'react' },
+};
+export const WithValue: Story = {
+  args: { label: 'Search', defaultValue: 'query' },
+};

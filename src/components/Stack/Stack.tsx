@@ -1,4 +1,9 @@
-import { forwardRef, type CSSProperties, type ElementType, type ReactNode } from 'react';
+import {
+  forwardRef,
+  type CSSProperties,
+  type ElementType,
+  type ReactNode,
+} from 'react';
 import { cn, vc } from '../../utils/cn';
 import styles from './Stack.module.css';
 

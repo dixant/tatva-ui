@@ -78,7 +78,11 @@ export function PricingBlock({
         background: 'var(--tatva-color-bg)',
       }}
     >
-      <Stack gap="8" align="center" style={{ maxWidth: 1024, margin: '0 auto' }}>
+      <Stack
+        gap="8"
+        align="center"
+        style={{ maxWidth: 1024, margin: '0 auto' }}
+      >
         <Stack gap="2" align="center">
           <Typography variant="h1" align="center">
             {title}

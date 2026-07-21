@@ -21,12 +21,54 @@ interface Row extends Record<string, unknown> {
 }
 
 const SAMPLE_ROWS: Row[] = [
-  { id: 1, name: 'Alice Chen', email: 'alice@example.com', role: 'Admin', status: 'Active', joined: '2024-01-11' },
-  { id: 2, name: 'Bob Miller', email: 'bob@example.com', role: 'Editor', status: 'Active', joined: '2024-03-05' },
-  { id: 3, name: 'Carol Diaz', email: 'carol@example.com', role: 'Viewer', status: 'Invited', joined: '2024-06-22' },
-  { id: 4, name: 'Dan Evans', email: 'dan@example.com', role: 'Editor', status: 'Archived', joined: '2025-02-10' },
-  { id: 5, name: 'Eve Fox', email: 'eve@example.com', role: 'Viewer', status: 'Active', joined: '2025-04-01' },
-  { id: 6, name: 'Frank Gale', email: 'frank@example.com', role: 'Editor', status: 'Active', joined: '2025-07-14' },
+  {
+    id: 1,
+    name: 'Alice Chen',
+    email: 'alice@example.com',
+    role: 'Admin',
+    status: 'Active',
+    joined: '2024-01-11',
+  },
+  {
+    id: 2,
+    name: 'Bob Miller',
+    email: 'bob@example.com',
+    role: 'Editor',
+    status: 'Active',
+    joined: '2024-03-05',
+  },
+  {
+    id: 3,
+    name: 'Carol Diaz',
+    email: 'carol@example.com',
+    role: 'Viewer',
+    status: 'Invited',
+    joined: '2024-06-22',
+  },
+  {
+    id: 4,
+    name: 'Dan Evans',
+    email: 'dan@example.com',
+    role: 'Editor',
+    status: 'Archived',
+    joined: '2025-02-10',
+  },
+  {
+    id: 5,
+    name: 'Eve Fox',
+    email: 'eve@example.com',
+    role: 'Viewer',
+    status: 'Active',
+    joined: '2025-04-01',
+  },
+  {
+    id: 6,
+    name: 'Frank Gale',
+    email: 'frank@example.com',
+    role: 'Editor',
+    status: 'Active',
+    joined: '2025-07-14',
+  },
 ];
 
 export interface DashboardBlockProps {
@@ -75,7 +117,9 @@ export function DashboardBlock({ rows = SAMPLE_ROWS }: DashboardBlockProps) {
       render: (v) => (
         <Badge
           variant="subtle"
-          color={v === 'Admin' ? 'primary' : v === 'Editor' ? 'info' : 'neutral'}
+          color={
+            v === 'Admin' ? 'primary' : v === 'Editor' ? 'info' : 'neutral'
+          }
           size="sm"
         >
           {String(v)}
@@ -101,7 +145,13 @@ export function DashboardBlock({ rows = SAMPLE_ROWS }: DashboardBlockProps) {
   ];
 
   return (
-    <div style={{ padding: 'var(--tatva-space-6)', maxWidth: 1200, margin: '0 auto' }}>
+    <div
+      style={{
+        padding: 'var(--tatva-space-6)',
+        maxWidth: 1200,
+        margin: '0 auto',
+      }}
+    >
       <Stack gap="6">
         <Breadcrumb>
           <Breadcrumb.Item href="#">Dashboard</Breadcrumb.Item>
@@ -115,7 +165,9 @@ export function DashboardBlock({ rows = SAMPLE_ROWS }: DashboardBlockProps) {
               Invite, remove, or change roles for your team.
             </Typography>
           </Stack>
-          <Button leftIcon={<Icon name="plus" size="sm" />}>Invite member</Button>
+          <Button leftIcon={<Icon name="plus" size="sm" />}>
+            Invite member
+          </Button>
         </Stack>
 
         {/* KPI cards */}

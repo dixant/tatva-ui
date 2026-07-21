@@ -51,8 +51,12 @@ describe('a11y (axe-core)', () => {
   it('Alert variants', async () => {
     const { container } = render(
       <>
-        <Alert variant="info" title="i">msg</Alert>
-        <Alert variant="error" title="e">msg</Alert>
+        <Alert variant="info" title="i">
+          msg
+        </Alert>
+        <Alert variant="error" title="e">
+          msg
+        </Alert>
       </>,
     );
     expect(await checkA11y(container)).toEqual([]);

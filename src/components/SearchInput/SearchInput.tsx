@@ -3,7 +3,10 @@ import { Input, type InputProps } from '../Input';
 import { Icon } from '../Icon';
 import { Spinner } from '../Spinner';
 
-export interface SearchInputProps extends Omit<InputProps, 'onChange' | 'type' | 'label'> {
+export interface SearchInputProps extends Omit<
+  InputProps,
+  'onChange' | 'type' | 'label'
+> {
   label?: string;
   onSearch?: (value: string) => void;
   debounceMs?: number;

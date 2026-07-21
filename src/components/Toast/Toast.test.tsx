@@ -2,7 +2,11 @@ import { describe, it, expect, vi } from 'vitest';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { ToastProvider, useToast } from './Toast';
 
-function Trigger({ opts }: { opts: Parameters<ReturnType<typeof useToast>['toast']>[0] }) {
+function Trigger({
+  opts,
+}: {
+  opts: Parameters<ReturnType<typeof useToast>['toast']>[0];
+}) {
   const { toast } = useToast();
   return <button onClick={() => toast(opts)}>fire</button>;
 }
@@ -49,7 +53,13 @@ describe('Toast', () => {
     const onClick = vi.fn();
     render(
       <ToastProvider>
-        <Trigger opts={{ title: 'Undo?', duration: 0, action: { label: 'Undo', onClick } }} />
+        <Trigger
+          opts={{
+            title: 'Undo?',
+            duration: 0,
+            action: { label: 'Undo', onClick },
+          }}
+        />
       </ToastProvider>,
     );
     fireEvent.click(screen.getByText('fire'));

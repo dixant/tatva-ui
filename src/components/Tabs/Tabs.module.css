@@ -3,8 +3,13 @@
   font-family: var(--tatva-font-family);
 }
 
-.rootHorizontal { flex-direction: column; }
-.rootVertical { flex-direction: row; gap: var(--tatva-space-4); }
+.rootHorizontal {
+  flex-direction: column;
+}
+.rootVertical {
+  flex-direction: row;
+  gap: var(--tatva-space-4);
+}
 
 .list {
   display: flex;
@@ -28,7 +33,9 @@
   cursor: pointer;
   position: relative;
   border-radius: var(--tatva-radius-sm) var(--tatva-radius-sm) 0 0;
-  transition: color var(--tatva-transition-fast), background-color var(--tatva-transition-fast);
+  transition:
+    color var(--tatva-transition-fast),
+    background-color var(--tatva-transition-fast);
 }
 
 .tab:hover:not([aria-disabled='true']) {

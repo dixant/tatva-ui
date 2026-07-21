@@ -5,7 +5,11 @@ import { Modal } from './Modal';
 
 describe('Modal', () => {
   it('does not render when open=false', () => {
-    render(<Modal open={false} onClose={() => {}}>Hi</Modal>);
+    render(
+      <Modal open={false} onClose={() => {}}>
+        Hi
+      </Modal>,
+    );
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
@@ -23,7 +27,11 @@ describe('Modal', () => {
   it('calls onClose on Escape', async () => {
     const user = userEvent.setup();
     const onClose = vi.fn();
-    render(<Modal open onClose={onClose} title="X">Hi</Modal>);
+    render(
+      <Modal open onClose={onClose} title="X">
+        Hi
+      </Modal>,
+    );
     await user.keyboard('{Escape}');
     expect(onClose).toHaveBeenCalled();
   });
@@ -31,7 +39,11 @@ describe('Modal', () => {
   it('calls onClose on backdrop click', async () => {
     const user = userEvent.setup();
     const onClose = vi.fn();
-    render(<Modal open onClose={onClose}>Hi</Modal>);
+    render(
+      <Modal open onClose={onClose}>
+        Hi
+      </Modal>,
+    );
     await user.click(screen.getByTestId('tatva-modal-backdrop'));
     expect(onClose).toHaveBeenCalled();
   });
@@ -49,14 +61,22 @@ describe('Modal', () => {
   });
 
   it('locks body scroll when open', () => {
-    render(<Modal open onClose={() => {}}>Hi</Modal>);
+    render(
+      <Modal open onClose={() => {}}>
+        Hi
+      </Modal>,
+    );
     expect(document.body.style.overflow).toBe('hidden');
   });
 
   it('close button fires onClose', async () => {
     const user = userEvent.setup();
     const onClose = vi.fn();
-    render(<Modal open onClose={onClose} title="X">Hi</Modal>);
+    render(
+      <Modal open onClose={onClose} title="X">
+        Hi
+      </Modal>,
+    );
     await user.click(screen.getByRole('button', { name: 'Close' }));
     expect(onClose).toHaveBeenCalled();
   });

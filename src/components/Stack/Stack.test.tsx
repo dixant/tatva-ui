@@ -14,19 +14,25 @@ describe('Stack', () => {
     expect(screen.getByText('b')).toBeInTheDocument();
   });
 
-  it.each(['horizontal', 'vertical'] as const)('applies direction=%s', (dir) => {
-    render(<Stack direction={dir}>x</Stack>);
-    expect(screen.getByTestId('tatva-stack').className).toMatch(
-      new RegExp(`direction${dir[0].toUpperCase()}${dir.slice(1)}`),
-    );
-  });
+  it.each(['horizontal', 'vertical'] as const)(
+    'applies direction=%s',
+    (dir) => {
+      render(<Stack direction={dir}>x</Stack>);
+      expect(screen.getByTestId('tatva-stack').className).toMatch(
+        new RegExp(`direction${dir[0].toUpperCase()}${dir.slice(1)}`),
+      );
+    },
+  );
 
-  it.each(['start', 'center', 'end', 'stretch'] as const)('applies align=%s', (a) => {
-    render(<Stack align={a}>x</Stack>);
-    expect(screen.getByTestId('tatva-stack').className).toMatch(
-      new RegExp(`align${a[0].toUpperCase()}${a.slice(1)}`),
-    );
-  });
+  it.each(['start', 'center', 'end', 'stretch'] as const)(
+    'applies align=%s',
+    (a) => {
+      render(<Stack align={a}>x</Stack>);
+      expect(screen.getByTestId('tatva-stack').className).toMatch(
+        new RegExp(`align${a[0].toUpperCase()}${a.slice(1)}`),
+      );
+    },
+  );
 
   it.each(['start', 'center', 'end', 'between', 'around'] as const)(
     'applies justify=%s',
@@ -45,7 +51,9 @@ describe('Stack', () => {
 
   it('applies token gap', () => {
     render(<Stack gap="8">x</Stack>);
-    expect(screen.getByTestId('tatva-stack').style.gap).toBe('var(--tatva-space-8)');
+    expect(screen.getByTestId('tatva-stack').style.gap).toBe(
+      'var(--tatva-space-8)',
+    );
   });
 
   it('accepts custom gap string', () => {
@@ -55,7 +63,9 @@ describe('Stack', () => {
 
   it('accepts numeric gap as token', () => {
     render(<Stack gap={4}>x</Stack>);
-    expect(screen.getByTestId('tatva-stack').style.gap).toBe('var(--tatva-space-4)');
+    expect(screen.getByTestId('tatva-stack').style.gap).toBe(
+      'var(--tatva-space-4)',
+    );
   });
 
   it('renders as another element via as', () => {

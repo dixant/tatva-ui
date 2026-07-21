@@ -34,26 +34,35 @@ export interface RadioButtonProps {
 
 export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
   function RadioButton(
-    { value, label, disabled, className, 'data-testid': dataTestId = 'tatva-radio' },
+    {
+      value,
+      label,
+      disabled,
+      className,
+      'data-testid': dataTestId = 'tatva-radio',
+    },
     ref,
   ) {
     const group = useContext(RadioGroupContext);
-    if (!group)
-      throw new Error('RadioButton must be used within a RadioGroup');
+    if (!group) throw new Error('RadioButton must be used within a RadioGroup');
 
     const id = useId();
     const checked = group.value === value;
     const nodeRef = useRef<HTMLInputElement | null>(null);
 
     return (
-      <label htmlFor={id} className={cn(styles.wrapper, disabled && styles.disabled, className)}>
+      <label
+        htmlFor={id}
+        className={cn(styles.wrapper, disabled && styles.disabled, className)}
+      >
         <input
           ref={(node) => {
             nodeRef.current = node;
             group.registerRef(value, node);
             if (typeof ref === 'function') ref(node);
             else if (ref)
-              (ref as React.MutableRefObject<HTMLInputElement | null>).current = node;
+              (ref as React.MutableRefObject<HTMLInputElement | null>).current =
+                node;
           }}
           id={id}
           type="radio"
@@ -65,7 +74,11 @@ export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
           className={styles.input}
           aria-checked={checked}
           tabIndex={
-            disabled ? -1 : checked || (group.value === undefined && !disabled) ? 0 : -1
+            disabled
+              ? -1
+              : checked || (group.value === undefined && !disabled)
+                ? 0
+                : -1
           }
           data-testid={dataTestId}
           onChange={() => group.onChange(value)}
@@ -140,7 +153,11 @@ export function RadioGroup({
     <div
       role="radiogroup"
       aria-label={label}
-      className={cn(styles.group, vc(styles, 'orientation', orientation), className)}
+      className={cn(
+        styles.group,
+        vc(styles, 'orientation', orientation),
+        className,
+      )}
     >
       <RadioGroupContext.Provider
         value={{

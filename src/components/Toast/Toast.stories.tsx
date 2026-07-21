@@ -43,10 +43,22 @@ export const AllVariants: Story = {
   render: () => (
     <ToastProvider>
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-        <Fire variant="success" title="Saved" description="Your changes are safe." />
-        <Fire variant="error" title="Failed" description="Something went wrong." />
+        <Fire
+          variant="success"
+          title="Saved"
+          description="Your changes are safe."
+        />
+        <Fire
+          variant="error"
+          title="Failed"
+          description="Something went wrong."
+        />
         <Fire variant="warning" title="Careful" description="Low disk space." />
-        <Fire variant="info" title="Heads up" description="New version available." />
+        <Fire
+          variant="info"
+          title="Heads up"
+          description="New version available."
+        />
       </div>
     </ToastProvider>
   ),

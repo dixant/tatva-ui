@@ -23,7 +23,11 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
     ref,
   ) {
     return (
-      <div ref={ref} className={cn(styles.empty, className)} data-testid={dataTestId}>
+      <div
+        ref={ref}
+        className={cn(styles.empty, className)}
+        data-testid={dataTestId}
+      >
         {icon && (
           <div className={styles.icon} aria-hidden="true">
             {icon}

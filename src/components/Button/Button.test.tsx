@@ -6,7 +6,9 @@ import { Button } from './Button';
 describe('Button', () => {
   it('renders children', () => {
     render(<Button>Click me</Button>);
-    expect(screen.getByRole('button', { name: 'Click me' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Click me' }),
+    ).toBeInTheDocument();
   });
 
   it('fires onClick', async () => {
@@ -65,7 +67,10 @@ describe('Button', () => {
 
   it('renders left and right icons', () => {
     render(
-      <Button leftIcon={<span data-testid="l" />} rightIcon={<span data-testid="r" />}>
+      <Button
+        leftIcon={<span data-testid="l" />}
+        rightIcon={<span data-testid="r" />}
+      >
         Ok
       </Button>,
     );

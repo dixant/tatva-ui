@@ -27,7 +27,10 @@ describe('FormField', () => {
         <input />
       </FormField>,
     );
-    expect(screen.getByLabelText('Name')).toHaveAttribute('aria-invalid', 'true');
+    expect(screen.getByLabelText('Name')).toHaveAttribute(
+      'aria-invalid',
+      'true',
+    );
   });
 
   it('aria-describedby links helper text', () => {

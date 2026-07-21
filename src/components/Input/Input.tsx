@@ -3,16 +3,12 @@ import { cn } from '../../utils/cn';
 import styles from './Input.module.css';
 
 export type InputType =
-  | 'text'
-  | 'email'
-  | 'password'
-  | 'number'
-  | 'search'
-  | 'tel'
-  | 'url';
+  'text' | 'email' | 'password' | 'number' | 'search' | 'tel' | 'url';
 
-export interface InputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> {
+export interface InputProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'size' | 'type'
+> {
   type?: InputType;
   label: string;
   helperText?: string;

@@ -26,7 +26,12 @@ export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Spinner(
   const px = typeof size === 'number' ? size : sizeMap[size];
   const stroke = color ?? 'var(--tatva-color-primary-500)';
   return (
-    <span role="status" aria-label={label} className={cn(styles.wrap, className)} data-testid={dataTestId}>
+    <span
+      role="status"
+      aria-label={label}
+      className={cn(styles.wrap, className)}
+      data-testid={dataTestId}
+    >
       <svg
         ref={ref}
         className={styles.spinner}
@@ -36,7 +41,14 @@ export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Spinner(
         fill="none"
         aria-hidden="true"
       >
-        <circle cx="12" cy="12" r="10" stroke={stroke} strokeOpacity="0.25" strokeWidth="3" />
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+          stroke={stroke}
+          strokeOpacity="0.25"
+          strokeWidth="3"
+        />
         <path
           d="M22 12A10 10 0 0 0 12 2"
           stroke={stroke}

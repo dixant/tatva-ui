@@ -26,7 +26,8 @@
   font-size: var(--tatva-font-size-md);
   line-height: var(--tatva-line-height-normal);
   resize: vertical;
-  transition: border-color var(--tatva-transition-fast),
+  transition:
+    border-color var(--tatva-transition-fast),
     box-shadow var(--tatva-transition-fast);
 }
 

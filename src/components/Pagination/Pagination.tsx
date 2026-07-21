@@ -71,7 +71,11 @@ export function Pagination({
       {items.map((item, i) => {
         if (item === 'left-ellipsis' || item === 'right-ellipsis') {
           return (
-            <span key={`${item}-${i}`} className={styles.ellipsis} aria-hidden="true">
+            <span
+              key={`${item}-${i}`}
+              className={styles.ellipsis}
+              aria-hidden="true"
+            >
               …
             </span>
           );

@@ -56,10 +56,18 @@
   color: var(--tatva-color-fg-muted);
 }
 
-.weightNormal { font-weight: var(--tatva-font-weight-normal); }
-.weightMedium { font-weight: var(--tatva-font-weight-medium); }
-.weightSemibold { font-weight: var(--tatva-font-weight-semibold); }
-.weightBold { font-weight: var(--tatva-font-weight-bold); }
+.weightNormal {
+  font-weight: var(--tatva-font-weight-normal);
+}
+.weightMedium {
+  font-weight: var(--tatva-font-weight-medium);
+}
+.weightSemibold {
+  font-weight: var(--tatva-font-weight-semibold);
+}
+.weightBold {
+  font-weight: var(--tatva-font-weight-bold);
+}
 
 .truncate {
   overflow: hidden;

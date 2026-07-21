@@ -12,7 +12,11 @@ describe('Badge', () => {
   it('remove button fires onRemove', async () => {
     const user = userEvent.setup();
     const onRemove = vi.fn();
-    render(<Badge removable onRemove={onRemove}>Alpha</Badge>);
+    render(
+      <Badge removable onRemove={onRemove}>
+        Alpha
+      </Badge>,
+    );
     await user.click(screen.getByLabelText('Remove Alpha'));
     expect(onRemove).toHaveBeenCalled();
   });

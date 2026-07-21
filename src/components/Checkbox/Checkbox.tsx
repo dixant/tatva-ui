@@ -24,18 +24,20 @@ const CheckboxGroupContext = createContext<CheckboxGroupContextValue | null>(
 
 // -------------------- Checkbox --------------------
 
-export interface CheckboxProps
-  extends Omit<
-    InputHTMLAttributes<HTMLInputElement>,
-    'type' | 'onChange' | 'size'
-  > {
+export interface CheckboxProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  'type' | 'onChange' | 'size'
+> {
   label: string;
   /** Value used when part of a CheckboxGroup. */
   value?: string;
   checked?: boolean;
   defaultChecked?: boolean;
   indeterminate?: boolean;
-  onChange?: (checked: boolean, event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (
+    checked: boolean,
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => void;
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
@@ -102,7 +104,12 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         <span className={styles.box} aria-hidden="true">
           {indeterminate ? (
             <svg viewBox="0 0 16 16" width="12" height="12">
-              <path d="M3 8h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              <path
+                d="M3 8h10"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
             </svg>
           ) : (
             <svg viewBox="0 0 16 16" width="12" height="12">
@@ -151,7 +158,11 @@ export function CheckboxGroup({
     <div
       role="group"
       aria-label={label}
-      className={cn(styles.group, vc(styles, 'orientation', orientation), className)}
+      className={cn(
+        styles.group,
+        vc(styles, 'orientation', orientation),
+        className,
+      )}
     >
       <CheckboxGroupContext.Provider value={{ value, onToggle, disabled }}>
         {children}

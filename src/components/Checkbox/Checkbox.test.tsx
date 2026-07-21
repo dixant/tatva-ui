@@ -25,7 +25,10 @@ describe('Checkbox', () => {
 
   it('renders indeterminate with aria-checked=mixed', () => {
     render(<Checkbox label="Some" indeterminate />);
-    expect(screen.getByLabelText('Some')).toHaveAttribute('aria-checked', 'mixed');
+    expect(screen.getByLabelText('Some')).toHaveAttribute(
+      'aria-checked',
+      'mixed',
+    );
   });
 
   it('does not fire onChange when disabled', async () => {

@@ -10,7 +10,11 @@ import { Stack } from '../components/Stack';
 import { Typography } from '../components/Typography';
 
 export interface LoginBlockProps {
-  onSubmit?: (creds: { email: string; password: string; remember: boolean }) => void;
+  onSubmit?: (creds: {
+    email: string;
+    password: string;
+    remember: boolean;
+  }) => void;
   onOAuth?: (provider: 'google' | 'github') => void;
   error?: string;
   loading?: boolean;
@@ -20,7 +24,12 @@ export interface LoginBlockProps {
  * Login block — a complete auth screen composed of Tatva primitives.
  * Copy this file, tweak, ship.
  */
-export function LoginBlock({ onSubmit, onOAuth, error, loading }: LoginBlockProps) {
+export function LoginBlock({
+  onSubmit,
+  onOAuth,
+  error,
+  loading,
+}: LoginBlockProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [remember, setRemember] = useState(true);
@@ -85,13 +94,25 @@ export function LoginBlock({ onSubmit, onOAuth, error, loading }: LoginBlockProp
                 required
                 autoComplete="current-password"
               />
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}
+              >
                 <Checkbox
                   label="Remember me"
                   checked={remember}
                   onChange={(v) => setRemember(v)}
                 />
-                <a href="#" style={{ color: 'var(--tatva-color-primary-700)', fontSize: 14 }}>
+                <a
+                  href="#"
+                  style={{
+                    color: 'var(--tatva-color-primary-700)',
+                    fontSize: 14,
+                  }}
+                >
                   Forgot password?
                 </a>
               </div>

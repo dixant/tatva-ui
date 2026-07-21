@@ -1,4 +1,12 @@
-import { Children, cloneElement, forwardRef, isValidElement, useState, type ReactElement, type ReactNode } from 'react';
+import {
+  Children,
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  useState,
+  type ReactElement,
+  type ReactNode,
+} from 'react';
 import { cn, vc } from '../../utils/cn';
 import styles from './Avatar.module.css';
 
@@ -99,10 +107,15 @@ export interface AvatarGroupProps {
   size?: AvatarSize;
 }
 
-export function AvatarGroup({ max = 4, children, className, size }: AvatarGroupProps) {
-  const arr = Children.toArray(children).filter(isValidElement) as ReactElement<
-    AvatarProps
-  >[];
+export function AvatarGroup({
+  max = 4,
+  children,
+  className,
+  size,
+}: AvatarGroupProps) {
+  const arr = Children.toArray(children).filter(
+    isValidElement,
+  ) as ReactElement<AvatarProps>[];
   const visible = arr.slice(0, max);
   const overflow = arr.length - visible.length;
   return (
@@ -117,7 +130,10 @@ export function AvatarGroup({ max = 4, children, className, size }: AvatarGroupP
       {overflow > 0 && (
         <span
           className={cn(styles.avatar, styles.overflow, styles.groupItem)}
-          style={{ width: sizeMap[size ?? 'md'], height: sizeMap[size ?? 'md'] }}
+          style={{
+            width: sizeMap[size ?? 'md'],
+            height: sizeMap[size ?? 'md'],
+          }}
           aria-label={`${overflow} more`}
         >
           +{overflow}

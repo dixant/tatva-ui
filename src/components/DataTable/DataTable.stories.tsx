@@ -1,14 +1,50 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { DataTable, type DataTableColumn } from './DataTable';
 
-type User = { id: number; name: string; email: string; role: string; joined: string };
+type User = {
+  id: number;
+  name: string;
+  email: string;
+  role: string;
+  joined: string;
+};
 
 const users: User[] = [
-  { id: 1, name: 'Alice Chen', email: 'alice@example.com', role: 'Admin', joined: '2023-04-11' },
-  { id: 2, name: 'Bob Miller', email: 'bob@example.com', role: 'Editor', joined: '2024-01-05' },
-  { id: 3, name: 'Carol Diaz', email: 'carol@example.com', role: 'Viewer', joined: '2024-06-22' },
-  { id: 4, name: 'Dan Evans', email: 'dan@example.com', role: 'Editor', joined: '2025-02-10' },
-  { id: 5, name: 'Eve Fox', email: 'eve@example.com', role: 'Viewer', joined: '2025-04-01' },
+  {
+    id: 1,
+    name: 'Alice Chen',
+    email: 'alice@example.com',
+    role: 'Admin',
+    joined: '2023-04-11',
+  },
+  {
+    id: 2,
+    name: 'Bob Miller',
+    email: 'bob@example.com',
+    role: 'Editor',
+    joined: '2024-01-05',
+  },
+  {
+    id: 3,
+    name: 'Carol Diaz',
+    email: 'carol@example.com',
+    role: 'Viewer',
+    joined: '2024-06-22',
+  },
+  {
+    id: 4,
+    name: 'Dan Evans',
+    email: 'dan@example.com',
+    role: 'Editor',
+    joined: '2025-02-10',
+  },
+  {
+    id: 5,
+    name: 'Eve Fox',
+    email: 'eve@example.com',
+    role: 'Viewer',
+    joined: '2025-04-01',
+  },
 ];
 
 const cols: DataTableColumn<User>[] = [
@@ -26,7 +62,9 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable>;
 
-export const Default: Story = { render: () => <DataTable columns={cols} data={users} /> };
+export const Default: Story = {
+  render: () => <DataTable columns={cols} data={users} />,
+};
 export const Sortable: Story = {
   render: () => <DataTable columns={cols} data={users} sortable />,
 };
@@ -42,14 +80,18 @@ export const WithPagination: Story = {
       role: i % 2 ? 'Editor' : 'Viewer',
       joined: '2025-01-01',
     }));
-    return <DataTable columns={cols} data={many} pagination pageSize={10} sortable />;
+    return (
+      <DataTable columns={cols} data={many} pagination pageSize={10} sortable />
+    );
   },
 };
 export const Loading: Story = {
   render: () => <DataTable columns={cols} data={[]} loading pageSize={5} />,
 };
 export const Empty: Story = {
-  render: () => <DataTable columns={cols} data={[]} emptyState="No users found." />,
+  render: () => (
+    <DataTable columns={cols} data={[]} emptyState="No users found." />
+  ),
 };
 export const CustomCellRenderer: Story = {
   render: () => {
@@ -78,6 +120,13 @@ export const CustomCellRenderer: Story = {
 };
 export const AllFeatures: Story = {
   render: () => (
-    <DataTable columns={cols} data={users} selectable sortable pagination pageSize={3} />
+    <DataTable
+      columns={cols}
+      data={users}
+      selectable
+      sortable
+      pagination
+      pageSize={3}
+    />
   ),
 };

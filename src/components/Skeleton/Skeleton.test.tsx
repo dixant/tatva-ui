@@ -29,7 +29,10 @@ describe('Skeleton', () => {
 
   it('applies aria-hidden', () => {
     render(<Skeleton />);
-    expect(screen.getByTestId('tatva-skeleton')).toHaveAttribute('aria-hidden', 'true');
+    expect(screen.getByTestId('tatva-skeleton')).toHaveAttribute(
+      'aria-hidden',
+      'true',
+    );
   });
 
   it.each(['text', 'circular', 'rectangular'] as const)(

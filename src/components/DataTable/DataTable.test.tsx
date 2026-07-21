@@ -43,7 +43,12 @@ describe('DataTable', () => {
     const user = userEvent.setup();
     const onSel = vi.fn();
     render(
-      <DataTable columns={cols} data={rows} selectable onSelectionChange={onSel} />,
+      <DataTable
+        columns={cols}
+        data={rows}
+        selectable
+        onSelectionChange={onSel}
+      />,
     );
     await user.click(screen.getByLabelText('Select row 1'));
     expect(onSel).toHaveBeenLastCalledWith([rows[0]]);
@@ -53,7 +58,12 @@ describe('DataTable', () => {
     const user = userEvent.setup();
     const onSel = vi.fn();
     render(
-      <DataTable columns={cols} data={rows} selectable onSelectionChange={onSel} />,
+      <DataTable
+        columns={cols}
+        data={rows}
+        selectable
+        onSelectionChange={onSel}
+      />,
     );
     await user.click(screen.getByLabelText('Select all rows'));
     expect(onSel).toHaveBeenLastCalledWith(rows);

@@ -39,9 +39,15 @@
   border-radius: 50%;
   border: 2px solid var(--tatva-color-bg);
 }
-.statusOnline { background-color: var(--tatva-color-success); }
-.statusOffline { background-color: var(--tatva-color-neutral-400); }
-.statusBusy { background-color: var(--tatva-color-error); }
+.statusOnline {
+  background-color: var(--tatva-color-success);
+}
+.statusOffline {
+  background-color: var(--tatva-color-neutral-400);
+}
+.statusBusy {
+  background-color: var(--tatva-color-error);
+}
 
 .group {
   display: inline-flex;

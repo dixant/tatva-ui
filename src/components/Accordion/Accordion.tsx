@@ -38,7 +38,8 @@ interface ItemContextValue {
 const ItemContext = createContext<ItemContextValue | null>(null);
 const useItem = () => {
   const ctx = useContext(ItemContext);
-  if (!ctx) throw new Error('Accordion.Trigger/Content must be inside Accordion.Item');
+  if (!ctx)
+    throw new Error('Accordion.Trigger/Content must be inside Accordion.Item');
   return ctx;
 };
 
@@ -91,7 +92,11 @@ function AccordionRoot({
       if (type === 'single') {
         emit(current.includes(v) ? [] : [v]);
       } else {
-        emit(current.includes(v) ? current.filter((x) => x !== v) : [...current, v]);
+        emit(
+          current.includes(v)
+            ? current.filter((x) => x !== v)
+            : [...current, v],
+        );
       }
     },
     [type, current, emit],
@@ -125,14 +130,22 @@ function Item({ value, className, children }: AccordionItemProps) {
         contentId: `${rid}-content`,
       }}
     >
-      <div className={cn(styles.item, open && styles.open, className)}>{children}</div>
+      <div className={cn(styles.item, open && styles.open, className)}>
+        {children}
+      </div>
     </ItemContext.Provider>
   );
 }
 
 // -------------------- Trigger --------------------
 
-function Trigger({ children, className }: { children: ReactNode; className?: string }) {
+function Trigger({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   const { open, toggle, triggerId, contentId } = useItem();
   return (
     <button
@@ -144,7 +157,10 @@ function Trigger({ children, className }: { children: ReactNode; className?: str
       className={cn(styles.trigger, className)}
     >
       <span>{children}</span>
-      <span className={cn(styles.chevron, open && styles.chevronOpen)} aria-hidden="true">
+      <span
+        className={cn(styles.chevron, open && styles.chevronOpen)}
+        aria-hidden="true"
+      >
         ▾
       </span>
     </button>
@@ -153,7 +169,13 @@ function Trigger({ children, className }: { children: ReactNode; className?: str
 
 // -------------------- Content --------------------
 
-function Content({ children, className }: { children: ReactNode; className?: string }) {
+function Content({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   const { open, contentId, triggerId } = useItem();
   return (
     <div
@@ -168,4 +190,8 @@ function Content({ children, className }: { children: ReactNode; className?: str
   );
 }
 
-export const Accordion = Object.assign(AccordionRoot, { Item, Trigger, Content });
+export const Accordion = Object.assign(AccordionRoot, {
+  Item,
+  Trigger,
+  Content,
+});

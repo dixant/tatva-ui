@@ -21,4 +21,6 @@ type Story = StoryObj<typeof MultiSelect>;
 
 export const Default: Story = {};
 export const WithMax: Story = { args: { max: 3 } };
-export const ManySelected: Story = { args: { defaultValue: ['react', 'vue', 'svelte'] } };
+export const ManySelected: Story = {
+  args: { defaultValue: ['react', 'vue', 'svelte'] },
+};

@@ -6,7 +6,9 @@ import { Pagination } from './Pagination';
 describe('Pagination', () => {
   it('disables Previous on page 1', () => {
     render(<Pagination totalPages={5} currentPage={1} onChange={() => {}} />);
-    expect(screen.getByRole('button', { name: 'Previous page' })).toBeDisabled();
+    expect(
+      screen.getByRole('button', { name: 'Previous page' }),
+    ).toBeDisabled();
   });
 
   it('disables Next on last page', () => {

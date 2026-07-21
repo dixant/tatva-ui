@@ -1,4 +1,9 @@
-import { forwardRef, type ElementType, type HTMLAttributes, type ReactNode } from 'react';
+import {
+  forwardRef,
+  type ElementType,
+  type HTMLAttributes,
+  type ReactNode,
+} from 'react';
 import { cn, vc } from '../../utils/cn';
 import styles from './Card.module.css';
 
@@ -13,7 +18,8 @@ export interface CardOwnProps {
   className?: string;
 }
 
-type CardProps = CardOwnProps & Omit<HTMLAttributes<HTMLElement>, keyof CardOwnProps>;
+type CardProps = CardOwnProps &
+  Omit<HTMLAttributes<HTMLElement>, keyof CardOwnProps>;
 
 const CardRoot = forwardRef<HTMLElement, CardProps>(function Card(
   {
@@ -48,15 +54,27 @@ const CardRoot = forwardRef<HTMLElement, CardProps>(function Card(
 export interface CardHeaderProps extends HTMLAttributes<HTMLDivElement> {
   divider?: boolean;
 }
-function CardHeader({ className, divider, children, ...rest }: CardHeaderProps) {
+function CardHeader({
+  className,
+  divider,
+  children,
+  ...rest
+}: CardHeaderProps) {
   return (
-    <div className={cn(styles.header, divider && styles.headerDivider, className)} {...rest}>
+    <div
+      className={cn(styles.header, divider && styles.headerDivider, className)}
+      {...rest}
+    >
       {children}
     </div>
   );
 }
 
-function CardBody({ className, children, ...rest }: HTMLAttributes<HTMLDivElement>) {
+function CardBody({
+  className,
+  children,
+  ...rest
+}: HTMLAttributes<HTMLDivElement>) {
   return (
     <div className={cn(styles.body, className)} {...rest}>
       {children}
@@ -67,9 +85,17 @@ function CardBody({ className, children, ...rest }: HTMLAttributes<HTMLDivElemen
 export interface CardFooterProps extends HTMLAttributes<HTMLDivElement> {
   divider?: boolean;
 }
-function CardFooter({ className, divider, children, ...rest }: CardFooterProps) {
+function CardFooter({
+  className,
+  divider,
+  children,
+  ...rest
+}: CardFooterProps) {
   return (
-    <div className={cn(styles.footer, divider && styles.footerDivider, className)} {...rest}>
+    <div
+      className={cn(styles.footer, divider && styles.footerDivider, className)}
+      {...rest}
+    >
       {children}
     </div>
   );

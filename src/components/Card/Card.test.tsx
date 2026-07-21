@@ -42,7 +42,9 @@ describe('Card', () => {
         <Card.Header divider>H</Card.Header>
       </Card>,
     );
-    expect(container.querySelector('[class*="headerDivider"]')).toBeInTheDocument();
+    expect(
+      container.querySelector('[class*="headerDivider"]'),
+    ).toBeInTheDocument();
   });
 
   it('footer divider adds separator class', () => {
@@ -51,7 +53,9 @@ describe('Card', () => {
         <Card.Footer divider>F</Card.Footer>
       </Card>,
     );
-    expect(container.querySelector('[class*="footerDivider"]')).toBeInTheDocument();
+    expect(
+      container.querySelector('[class*="footerDivider"]'),
+    ).toBeInTheDocument();
   });
 
   it('renders as another element via as prop', () => {

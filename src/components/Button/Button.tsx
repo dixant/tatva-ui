@@ -1,14 +1,16 @@
-import { forwardRef, type ElementType, type ReactElement, type ReactNode, type Ref } from 'react';
+import {
+  forwardRef,
+  type ElementType,
+  type ReactElement,
+  type ReactNode,
+  type Ref,
+} from 'react';
 import { cn, vc } from '../../utils/cn';
 import type { PolymorphicComponentPropsWithRef } from '../../utils/polymorphic';
 import styles from './Button.module.css';
 
 export type ButtonVariant =
-  | 'primary'
-  | 'secondary'
-  | 'outline'
-  | 'ghost'
-  | 'destructive';
+  'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive';
 
 export type ButtonSize = 'sm' | 'md' | 'lg';
 

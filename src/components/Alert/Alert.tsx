@@ -34,7 +34,8 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
   }: AlertProps & { 'data-testid'?: string },
   ref,
 ) {
-  const role = variant === 'error' || variant === 'warning' ? 'alert' : 'status';
+  const role =
+    variant === 'error' || variant === 'warning' ? 'alert' : 'status';
   return (
     <div
       ref={ref}

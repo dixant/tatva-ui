@@ -12,7 +12,10 @@ export default meta;
 type Story = StoryObj<typeof EmptyState>;
 
 export const Default: Story = {
-  args: { title: 'No results found', description: 'Try adjusting your filters.' },
+  args: {
+    title: 'No results found',
+    description: 'Try adjusting your filters.',
+  },
 };
 
 export const WithAction: Story = {

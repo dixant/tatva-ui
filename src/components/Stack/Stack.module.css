@@ -2,18 +2,42 @@
   display: flex;
 }
 
-.directionVertical { flex-direction: column; }
-.directionHorizontal { flex-direction: row; }
+.directionVertical {
+  flex-direction: column;
+}
+.directionHorizontal {
+  flex-direction: row;
+}
 
-.alignStart { align-items: flex-start; }
-.alignCenter { align-items: center; }
-.alignEnd { align-items: flex-end; }
-.alignStretch { align-items: stretch; }
+.alignStart {
+  align-items: flex-start;
+}
+.alignCenter {
+  align-items: center;
+}
+.alignEnd {
+  align-items: flex-end;
+}
+.alignStretch {
+  align-items: stretch;
+}
 
-.justifyStart { justify-content: flex-start; }
-.justifyCenter { justify-content: center; }
-.justifyEnd { justify-content: flex-end; }
-.justifyBetween { justify-content: space-between; }
-.justifyAround { justify-content: space-around; }
+.justifyStart {
+  justify-content: flex-start;
+}
+.justifyCenter {
+  justify-content: center;
+}
+.justifyEnd {
+  justify-content: flex-end;
+}
+.justifyBetween {
+  justify-content: space-between;
+}
+.justifyAround {
+  justify-content: space-around;
+}
 
-.wrap { flex-wrap: wrap; }
+.wrap {
+  flex-wrap: wrap;
+}

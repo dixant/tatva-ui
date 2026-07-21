@@ -15,7 +15,9 @@ describe('Spinner', () => {
 
   it('sets custom aria-label', () => {
     render(<Spinner label="Please wait" />);
-    expect(screen.getByRole('status', { name: 'Please wait' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('status', { name: 'Please wait' }),
+    ).toBeInTheDocument();
   });
 
   it.each([
@@ -35,6 +37,8 @@ describe('Spinner', () => {
 
   it('applies custom color', () => {
     const { container } = render(<Spinner color="red" />);
-    expect(container.querySelector('circle')?.getAttribute('stroke')).toBe('red');
+    expect(container.querySelector('circle')?.getAttribute('stroke')).toBe(
+      'red',
+    );
   });
 });

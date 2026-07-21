@@ -17,7 +17,12 @@ function Demo(props: Partial<React.ComponentProps<typeof Modal>>) {
   return (
     <>
       <Button onClick={() => setOpen(true)}>Open modal</Button>
-      <Modal open={open} onClose={() => setOpen(false)} title="Confirm action" {...props}>
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        title="Confirm action"
+        {...props}
+      >
         <Modal.Body>Are you sure you want to continue?</Modal.Body>
         <Modal.Footer>
           <Button variant="ghost" onClick={() => setOpen(false)}>
@@ -55,4 +60,6 @@ function LongContentDemo() {
   );
 }
 export const LongContent: Story = { render: () => <LongContentDemo /> };
-export const NoCloseOnBackdrop: Story = { render: () => <Demo closeOnBackdrop={false} /> };
+export const NoCloseOnBackdrop: Story = {
+  render: () => <Demo closeOnBackdrop={false} />,
+};

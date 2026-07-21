@@ -10,8 +10,10 @@ import {
 import { cn } from '../../utils/cn';
 import styles from './Textarea.module.css';
 
-export interface TextareaProps
-  extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'rows'> {
+export interface TextareaProps extends Omit<
+  TextareaHTMLAttributes<HTMLTextAreaElement>,
+  'rows'
+> {
   label: string;
   rows?: number;
   helperText?: string;
@@ -52,7 +54,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       String(value ?? defaultValue ?? ''),
     );
     const internalRef = useRef<HTMLTextAreaElement | null>(null);
-    const currentLen = value !== undefined ? String(value).length : inner.length;
+    const currentLen =
+      value !== undefined ? String(value).length : inner.length;
 
     useEffect(() => {
       if (value !== undefined) setInner(String(value));
@@ -85,7 +88,10 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={(node) => {
             internalRef.current = node;
             if (typeof ref === 'function') ref(node);
-            else if (ref) (ref as React.MutableRefObject<HTMLTextAreaElement | null>).current = node;
+            else if (ref)
+              (
+                ref as React.MutableRefObject<HTMLTextAreaElement | null>
+              ).current = node;
           }}
           id={textareaId}
           rows={rows}

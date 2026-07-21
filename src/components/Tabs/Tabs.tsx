@@ -18,7 +18,11 @@ interface TabsContextValue {
   value: string;
   setValue: (v: string) => void;
   orientation: 'horizontal' | 'vertical';
-  register: (value: string, disabled: boolean, el: HTMLButtonElement | null) => void;
+  register: (
+    value: string,
+    disabled: boolean,
+    el: HTMLButtonElement | null,
+  ) => void;
   baseId: string;
 }
 const TabsContext = createContext<TabsContextValue | null>(null);
@@ -60,9 +64,9 @@ function TabsRoot({
   );
 
   // Track registered tab elements for arrow-key navigation.
-  const tabs = useRef<Map<string, { disabled: boolean; el: HTMLButtonElement }>>(
-    new Map(),
-  );
+  const tabs = useRef<
+    Map<string, { disabled: boolean; el: HTMLButtonElement }>
+  >(new Map());
   const register = useCallback(
     (v: string, disabled: boolean, el: HTMLButtonElement | null) => {
       if (el) tabs.current.set(v, { disabled, el });
@@ -78,7 +82,9 @@ function TabsRoot({
       <div
         className={cn(
           styles.root,
-          orientation === 'vertical' ? styles.rootVertical : styles.rootHorizontal,
+          orientation === 'vertical'
+            ? styles.rootVertical
+            : styles.rootHorizontal,
           className,
         )}
       >
@@ -119,8 +125,13 @@ export interface TabProps {
   children: ReactNode;
 }
 function Tab({ value, disabled = false, className, children }: TabProps) {
-  const { value: selected, setValue, register, baseId, orientation } =
-    useTabsContext();
+  const {
+    value: selected,
+    setValue,
+    register,
+    baseId,
+    orientation,
+  } = useTabsContext();
   const btnRef = useRef<HTMLButtonElement | null>(null);
   const isSelected = selected === value;
   const tabId = `${baseId}-tab-${value}`;
@@ -138,7 +149,9 @@ function Tab({ value, disabled = false, className, children }: TabProps) {
     const parent = btnRef.current?.parentElement;
     if (!parent) return;
     const buttons = Array.from(
-      parent.querySelectorAll<HTMLButtonElement>('[role="tab"]:not([aria-disabled="true"])'),
+      parent.querySelectorAll<HTMLButtonElement>(
+        '[role="tab"]:not([aria-disabled="true"])',
+      ),
     );
     if (!btnRef.current) return;
     const idx = buttons.indexOf(btnRef.current);

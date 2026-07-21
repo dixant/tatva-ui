@@ -14,10 +14,9 @@ export type PolymorphicRef<C extends ElementType> =
   ComponentPropsWithRef<C>['ref'];
 
 /** Props of `C` with our own props layered on top, plus `as`. */
-export type PolymorphicComponentProps<
-  C extends ElementType,
-  P = object,
-> = P & AsProp<C> & Omit<ComponentPropsWithoutRef<C>, keyof P | 'as'>;
+export type PolymorphicComponentProps<C extends ElementType, P = object> = P &
+  AsProp<C> &
+  Omit<ComponentPropsWithoutRef<C>, keyof P | 'as'>;
 
 /** Same as PolymorphicComponentProps but with a `ref` typed to `C`. */
 export type PolymorphicComponentPropsWithRef<

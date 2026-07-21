@@ -1,4 +1,9 @@
-import { forwardRef, type CSSProperties, type ElementType, type ReactNode } from 'react';
+import {
+  forwardRef,
+  type CSSProperties,
+  type ElementType,
+  type ReactNode,
+} from 'react';
 import { cn, vc } from '../../utils/cn';
 import styles from './Typography.module.css';
 
@@ -63,7 +68,9 @@ export const Typography = forwardRef<HTMLElement, TypographyProps>(
   ) {
     const Component = (as ?? variantToElement[variant]) as ElementType;
     const combinedStyle: CSSProperties = {
-      ...(color ? { color: color.startsWith('--') ? `var(${color})` : color } : {}),
+      ...(color
+        ? { color: color.startsWith('--') ? `var(${color})` : color }
+        : {}),
       ...(align ? { textAlign: align } : {}),
       ...(maxLines
         ? {

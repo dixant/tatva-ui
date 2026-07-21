@@ -10,7 +10,9 @@ describe('Breadcrumb', () => {
         <Breadcrumb.Item>Docs</Breadcrumb.Item>
       </Breadcrumb>,
     );
-    expect(screen.getByRole('navigation', { name: 'Breadcrumb' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('navigation', { name: 'Breadcrumb' }),
+    ).toBeInTheDocument();
   });
 
   it('last item is marked aria-current=page', () => {

@@ -21,7 +21,12 @@ export const Default: Story = {
 
 export const Horizontal: Story = {
   render: () => (
-    <RadioGroup name="size" orientation="horizontal" defaultValue="m" label="Size">
+    <RadioGroup
+      name="size"
+      orientation="horizontal"
+      defaultValue="m"
+      label="Size"
+    >
       <RadioButton value="s" label="Small" />
       <RadioButton value="m" label="Medium" />
       <RadioButton value="l" label="Large" />

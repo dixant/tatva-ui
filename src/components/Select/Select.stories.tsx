@@ -26,7 +26,9 @@ type Story = StoryObj<typeof Select>;
 
 export const Default: Story = {};
 export const WithPlaceholder: Story = { args: { placeholder: 'Pick one' } };
-export const WithGroups: Story = { args: { options: groupedOptions, label: 'Produce' } };
+export const WithGroups: Story = {
+  args: { options: groupedOptions, label: 'Produce' },
+};
 export const Searchable: Story = { args: { searchable: true } };
 export const Disabled: Story = { args: { disabled: true } };
 export const WithError: Story = { args: { error: 'Please choose one' } };

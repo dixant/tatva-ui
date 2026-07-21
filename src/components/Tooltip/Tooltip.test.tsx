@@ -12,7 +12,9 @@ describe('Tooltip', () => {
       </Tooltip>,
     );
     await user.hover(screen.getByText('Btn'));
-    await waitFor(() => expect(screen.getByRole('tooltip')).toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.getByRole('tooltip')).toBeInTheDocument(),
+    );
     expect(screen.getByRole('tooltip')).toHaveTextContent('Hi there');
   });
 
@@ -24,7 +26,9 @@ describe('Tooltip', () => {
       </Tooltip>,
     );
     await user.hover(screen.getByText('Btn'));
-    await waitFor(() => expect(screen.getByRole('tooltip')).toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.getByRole('tooltip')).toBeInTheDocument(),
+    );
     await user.unhover(screen.getByText('Btn'));
     await waitFor(() =>
       expect(screen.queryByRole('tooltip')).not.toBeInTheDocument(),

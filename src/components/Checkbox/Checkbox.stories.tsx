@@ -30,7 +30,12 @@ function VerticalGroupDemo() {
 function HorizontalGroupDemo() {
   const [v, setV] = useState<string[]>([]);
   return (
-    <CheckboxGroup value={v} onChange={setV} orientation="horizontal" label="Sizes">
+    <CheckboxGroup
+      value={v}
+      onChange={setV}
+      orientation="horizontal"
+      label="Sizes"
+    >
       <Checkbox label="S" value="s" />
       <Checkbox label="M" value="m" />
       <Checkbox label="L" value="l" />
@@ -39,4 +44,6 @@ function HorizontalGroupDemo() {
 }
 
 export const GroupVertical: StoryObj = { render: () => <VerticalGroupDemo /> };
-export const GroupHorizontal: StoryObj = { render: () => <HorizontalGroupDemo /> };
+export const GroupHorizontal: StoryObj = {
+  render: () => <HorizontalGroupDemo />,
+};

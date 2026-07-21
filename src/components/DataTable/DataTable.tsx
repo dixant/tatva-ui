@@ -89,7 +89,9 @@ export function DataTable<T extends Record<string, unknown>>({
     return sorted.slice(start, start + pageSize);
   }, [sorted, pagination, page, pageSize]);
 
-  const totalPages = pagination ? Math.max(1, Math.ceil(sorted.length / pageSize)) : 1;
+  const totalPages = pagination
+    ? Math.max(1, Math.ceil(sorted.length / pageSize))
+    : 1;
 
   const handleSort = (key: string) => {
     let nextDir: SortDirection;
@@ -121,7 +123,9 @@ export function DataTable<T extends Record<string, unknown>>({
     notifySelection(next);
   };
 
-  const allSelectedOnPage = paginated.every((r, i) => selected.has(getKey(r, i)));
+  const allSelectedOnPage = paginated.every((r, i) =>
+    selected.has(getKey(r, i)),
+  );
   const someSelectedOnPage =
     !allSelectedOnPage && paginated.some((r, i) => selected.has(getKey(r, i)));
 
@@ -245,7 +249,9 @@ export function DataTable<T extends Record<string, unknown>>({
                           className={styles.td}
                           style={{ textAlign: col.align ?? 'left' }}
                         >
-                          {col.render ? col.render(val, row) : (val as ReactNode) ?? ''}
+                          {col.render
+                            ? col.render(val, row)
+                            : ((val as ReactNode) ?? '')}
                         </td>
                       );
                     })}

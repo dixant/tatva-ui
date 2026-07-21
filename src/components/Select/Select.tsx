@@ -200,7 +200,9 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           onKeyDown={handleTriggerKey}
           data-testid={dataTestId}
         >
-          <span className={cn(styles.value, !selectedOption && styles.placeholder)}>
+          <span
+            className={cn(styles.value, !selectedOption && styles.placeholder)}
+          >
             {selectedOption?.label ?? placeholder}
           </span>
           <span aria-hidden="true" className={styles.caret}>
@@ -276,7 +278,9 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
             </ul>
           </div>
         )}
-        {helperText && !error && <span className={styles.helper}>{helperText}</span>}
+        {helperText && !error && (
+          <span className={styles.helper}>{helperText}</span>
+        )}
         {error && (
           <span className={styles.error} role="alert" id={`${rid2}-error`}>
             {error}

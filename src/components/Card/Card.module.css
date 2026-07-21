@@ -18,10 +18,17 @@
   background-color: var(--tatva-color-bg-subtle);
 }
 
-.paddingNone {}
-.paddingSm { padding: var(--tatva-space-3); }
-.paddingMd { padding: var(--tatva-space-4); }
-.paddingLg { padding: var(--tatva-space-6); }
+.paddingNone {
+}
+.paddingSm {
+  padding: var(--tatva-space-3);
+}
+.paddingMd {
+  padding: var(--tatva-space-4);
+}
+.paddingLg {
+  padding: var(--tatva-space-6);
+}
 
 .header {
   padding-bottom: var(--tatva-space-3);

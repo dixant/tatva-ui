@@ -113,7 +113,8 @@ export function MultiSelect({
     }
   };
 
-  const labelFor = (v: string) => options.find((o) => o.value === v)?.label ?? v;
+  const labelFor = (v: string) =>
+    options.find((o) => o.value === v)?.label ?? v;
 
   return (
     <div
@@ -201,7 +202,9 @@ export function MultiSelect({
             ))}
         </ul>
       )}
-      {helperText && !error && <span className={styles.helper}>{helperText}</span>}
+      {helperText && !error && (
+        <span className={styles.helper}>{helperText}</span>
+      )}
       {error && (
         <span className={styles.error} role="alert">
           {error}

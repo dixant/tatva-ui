@@ -31,7 +31,9 @@ describe('Accordion', () => {
     render(<Sample type="single" />);
     await user.click(screen.getByRole('button', { name: /A/ }));
     await user.click(screen.getByRole('button', { name: /B/ }));
-    expect(screen.getByText('Panel A').closest('[role="region"]')).toHaveAttribute('hidden');
+    expect(
+      screen.getByText('Panel A').closest('[role="region"]'),
+    ).toHaveAttribute('hidden');
     expect(screen.getByText('Panel B')).toBeVisible();
   });
 

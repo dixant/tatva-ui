@@ -11,8 +11,12 @@ type Story = StoryObj<typeof Skeleton>;
 
 export const Text: Story = { args: { width: 240 } };
 export const MultiLine: Story = { args: { lines: 4, width: 320 } };
-export const Circular: Story = { args: { variant: 'circular', width: 48, height: 48 } };
-export const Rectangular: Story = { args: { variant: 'rectangular', width: 320, height: 120 } };
+export const Circular: Story = {
+  args: { variant: 'circular', width: 48, height: 48 },
+};
+export const Rectangular: Story = {
+  args: { variant: 'rectangular', width: 320, height: 120 },
+};
 
 export const CardSkeleton: Story = {
   render: () => (

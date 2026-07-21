@@ -17,7 +17,9 @@ export const WithImage: Story = {
     size: 'lg',
   },
 };
-export const WithInitials: Story = { args: { name: 'Ada Lovelace', size: 'lg' } };
+export const WithInitials: Story = {
+  args: { name: 'Ada Lovelace', size: 'lg' },
+};
 export const WithIcon: Story = { args: { size: 'lg' } };
 export const WithStatus: Story = {
   render: () => (

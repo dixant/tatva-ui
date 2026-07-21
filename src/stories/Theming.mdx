@@ -15,7 +15,7 @@ import { ThemeProvider } from '@dixant/tatva-ui';
 
 <ThemeProvider defaultTheme="dark" storageKey="my-app-theme">
   <App />
-</ThemeProvider>
+</ThemeProvider>;
 ```
 
 Options:
@@ -46,7 +46,7 @@ All tokens live under `:root` and per-theme selectors. Override them in your own
 ```css
 /* your-brand.css — imported after '@dixant/tatva-ui/style.css' */
 :root {
-  --tatva-color-primary-500: #10b981;  /* your brand green */
+  --tatva-color-primary-500: #10b981; /* your brand green */
   --tatva-color-primary-600: #059669;
   --tatva-color-primary-700: #047857;
 }
@@ -74,7 +74,7 @@ You can also import token names as TypeScript constants:
 ```tsx
 import { colors, spacing, radii } from '@dixant/tatva-ui';
 
-<div style={{ color: colors.primary[600], padding: spacing[4] }} />
+<div style={{ color: colors.primary[600], padding: spacing[4] }} />;
 ```
 
 Each constant is the CSS `var(--…)` string, so the value stays theme-reactive.

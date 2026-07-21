@@ -14,9 +14,7 @@ describe('MultiSelect', () => {
   it('selects and adds badge', async () => {
     const user = userEvent.setup();
     const onChange = vi.fn();
-    render(
-      <MultiSelect label="Stack" options={options} onChange={onChange} />,
-    );
+    render(<MultiSelect label="Stack" options={options} onChange={onChange} />);
     await user.click(screen.getByLabelText('Stack'));
     await user.click(screen.getByText('React'));
     expect(onChange).toHaveBeenCalledWith(['react']);
@@ -26,7 +24,14 @@ describe('MultiSelect', () => {
     const user = userEvent.setup();
     function Harness() {
       const [v, setV] = useState<string[]>(['react']);
-      return <MultiSelect label="Stack" options={options} value={v} onChange={setV} />;
+      return (
+        <MultiSelect
+          label="Stack"
+          options={options}
+          value={v}
+          onChange={setV}
+        />
+      );
     }
     render(<Harness />);
     await user.click(screen.getByLabelText('Remove React'));
@@ -46,7 +51,9 @@ describe('MultiSelect', () => {
       />,
     );
     await user.click(screen.getByLabelText('Stack'));
-    expect(screen.getByText(/Maximum 1 selections reached/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Maximum 1 selections reached/),
+    ).toBeInTheDocument();
   });
 
   it('backspace removes last', async () => {

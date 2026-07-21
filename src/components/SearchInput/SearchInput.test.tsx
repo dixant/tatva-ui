@@ -33,13 +33,17 @@ describe('SearchInput', () => {
     const onClear = vi.fn();
     render(<SearchInput defaultValue="hello" onClear={onClear} />);
     await user.click(screen.getByLabelText('Clear search'));
-    expect((screen.getByLabelText('Search') as HTMLInputElement).value).toBe('');
+    expect((screen.getByLabelText('Search') as HTMLInputElement).value).toBe(
+      '',
+    );
     expect(onClear).toHaveBeenCalled();
   });
 
   it('shows spinner when loading', () => {
     render(<SearchInput loading defaultValue="hi" />);
-    expect(screen.getByRole('status', { name: 'Searching' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('status', { name: 'Searching' }),
+    ).toBeInTheDocument();
   });
 
   it('no clear/spinner when empty and not loading', () => {
@@ -50,6 +54,8 @@ describe('SearchInput', () => {
 
   it('supports controlled value', async () => {
     render(<SearchInput value="fixed" onChange={() => {}} />);
-    expect((screen.getByLabelText('Search') as HTMLInputElement).value).toBe('fixed');
+    expect((screen.getByLabelText('Search') as HTMLInputElement).value).toBe(
+      'fixed',
+    );
   });
 });

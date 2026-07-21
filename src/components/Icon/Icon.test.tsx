@@ -10,7 +10,10 @@ describe('Icon', () => {
 
   it('is aria-hidden by default', () => {
     const { container } = render(<Icon name="close" />);
-    expect(container.querySelector('svg')).toHaveAttribute('aria-hidden', 'true');
+    expect(container.querySelector('svg')).toHaveAttribute(
+      'aria-hidden',
+      'true',
+    );
   });
 
   it('exposes label when provided', () => {

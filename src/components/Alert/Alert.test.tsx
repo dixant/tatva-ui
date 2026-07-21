@@ -21,16 +21,18 @@ describe('Alert', () => {
   });
 
   it('renders custom icon', () => {
-    render(
-      <Alert icon={<span data-testid="ic">i</span>}>x</Alert>,
-    );
+    render(<Alert icon={<span data-testid="ic">i</span>}>x</Alert>);
     expect(screen.getByTestId('ic')).toBeInTheDocument();
   });
 
   it('close button fires onClose', async () => {
     const user = userEvent.setup();
     const onClose = vi.fn();
-    render(<Alert closable onClose={onClose}>x</Alert>);
+    render(
+      <Alert closable onClose={onClose}>
+        x
+      </Alert>,
+    );
     await user.click(screen.getByLabelText('Close alert'));
     expect(onClose).toHaveBeenCalled();
   });

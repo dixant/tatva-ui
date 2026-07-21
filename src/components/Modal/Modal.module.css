@@ -25,9 +25,15 @@
   font-family: var(--tatva-font-family);
 }
 
-.sizeSm { max-width: 400px; }
-.sizeMd { max-width: 560px; }
-.sizeLg { max-width: 720px; }
+.sizeSm {
+  max-width: 400px;
+}
+.sizeMd {
+  max-width: 560px;
+}
+.sizeLg {
+  max-width: 720px;
+}
 .sizeFullscreen {
   max-width: none;
   width: 100vw;
@@ -92,10 +98,20 @@
 }
 
 @keyframes tatva-modal-backdrop-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes tatva-modal-content-in {
-  from { opacity: 0; transform: scale(0.96); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

@@ -56,7 +56,9 @@ function BreadcrumbRoot({
           const el = child as ReactElement<BreadcrumbItemProps>;
           const withActive =
             el.props.active === undefined
-              ? cloneElement(el, { active: isLast } as Partial<BreadcrumbItemProps>)
+              ? cloneElement(el, {
+                  active: isLast,
+                } as Partial<BreadcrumbItemProps>)
               : el;
           return (
             <li key={i} className={styles.li}>

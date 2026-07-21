@@ -3,7 +3,8 @@ import { cn, vc } from '../../utils/cn';
 import styles from './Badge.module.css';
 
 export type BadgeVariant = 'solid' | 'outline' | 'subtle';
-export type BadgeColor = 'primary' | 'success' | 'error' | 'warning' | 'info' | 'neutral';
+export type BadgeColor =
+  'primary' | 'success' | 'error' | 'warning' | 'info' | 'neutral';
 export type BadgeSize = 'sm' | 'md';
 
 export interface BadgeProps {

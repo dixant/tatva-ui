@@ -29,7 +29,12 @@ export const AllVariants: Story = {
 };
 
 export const Closable: Story = {
-  args: { variant: 'info', title: 'Dismiss me', closable: true, children: 'Click ×' },
+  args: {
+    variant: 'info',
+    title: 'Dismiss me',
+    closable: true,
+    children: 'Click ×',
+  },
 };
 
 export const NoTitle: Story = {

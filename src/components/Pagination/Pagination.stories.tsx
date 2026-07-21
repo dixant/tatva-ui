@@ -15,7 +15,9 @@ function Controlled({ total }: { total: number }) {
   return (
     <div style={{ display: 'grid', gap: 12 }}>
       <Pagination totalPages={total} currentPage={page} onChange={setPage} />
-      <span>Page {page} of {total}</span>
+      <span>
+        Page {page} of {total}
+      </span>
     </div>
   );
 }
@@ -23,8 +25,12 @@ function Controlled({ total }: { total: number }) {
 export const Default: Story = { render: () => <Controlled total={5} /> };
 export const ManyPages: Story = { render: () => <Controlled total={30} /> };
 export const FirstPage: Story = {
-  render: () => <Pagination totalPages={10} currentPage={1} onChange={() => {}} />,
+  render: () => (
+    <Pagination totalPages={10} currentPage={1} onChange={() => {}} />
+  ),
 };
 export const LastPage: Story = {
-  render: () => <Pagination totalPages={10} currentPage={10} onChange={() => {}} />,
+  render: () => (
+    <Pagination totalPages={10} currentPage={10} onChange={() => {}} />
+  ),
 };

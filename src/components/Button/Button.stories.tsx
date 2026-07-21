@@ -69,4 +69,6 @@ export const AsLink: Story = {
 
 export const Disabled: Story = { args: { disabled: true } };
 
-export const FullWidth: Story = { args: { fullWidth: true, children: 'Full width' } };
+export const FullWidth: Story = {
+  args: { fullWidth: true, children: 'Full width' },
+};

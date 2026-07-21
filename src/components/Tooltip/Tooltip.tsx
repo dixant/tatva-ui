@@ -34,7 +34,11 @@ export function Tooltip({
 }: TooltipProps) {
   const id = useId();
   const [open, setOpen] = useState(false);
-  const [coords, setCoords] = useState<{ top: number; left: number; pos: TooltipPosition }>({
+  const [coords, setCoords] = useState<{
+    top: number;
+    left: number;
+    pos: TooltipPosition;
+  }>({
     top: 0,
     left: 0,
     pos: position,
@@ -99,7 +103,10 @@ export function Tooltip({
     let p = place(pos);
     // Flip if off-screen.
     if (pos === 'top' && p.top < 4) pos = 'bottom';
-    else if (pos === 'bottom' && p.top + tipRect.height > window.innerHeight - 4)
+    else if (
+      pos === 'bottom' &&
+      p.top + tipRect.height > window.innerHeight - 4
+    )
       pos = 'top';
     else if (pos === 'left' && p.left < 4) pos = 'right';
     else if (pos === 'right' && p.left + tipRect.width > window.innerWidth - 4)
@@ -117,32 +124,45 @@ export function Tooltip({
   const child = Children.only(children);
   if (!isValidElement(child)) return children;
 
-  const merged = cloneElement(child as ReactElement<Record<string, unknown>>, {
-    ref: (node: HTMLElement | null) => {
-      triggerRef.current = node;
-      const originalRef = (child as unknown as { ref?: React.Ref<HTMLElement> }).ref;
-      if (typeof originalRef === 'function') originalRef(node);
-      else if (originalRef && 'current' in originalRef)
-        (originalRef as { current: HTMLElement | null }).current = node;
-    },
-    'aria-describedby': open ? id : (child.props as { 'aria-describedby'?: string })['aria-describedby'],
-    onMouseEnter: (e: React.MouseEvent) => {
-      show();
-      (child.props as { onMouseEnter?: (e: React.MouseEvent) => void }).onMouseEnter?.(e);
-    },
-    onMouseLeave: (e: React.MouseEvent) => {
-      hide();
-      (child.props as { onMouseLeave?: (e: React.MouseEvent) => void }).onMouseLeave?.(e);
-    },
-    onFocus: (e: React.FocusEvent) => {
-      show();
-      (child.props as { onFocus?: (e: React.FocusEvent) => void }).onFocus?.(e);
-    },
-    onBlur: (e: React.FocusEvent) => {
-      hide();
-      (child.props as { onBlur?: (e: React.FocusEvent) => void }).onBlur?.(e);
-    },
-  } as never);
+  const merged = cloneElement(
+    child as ReactElement<Record<string, unknown>>,
+    {
+      ref: (node: HTMLElement | null) => {
+        triggerRef.current = node;
+        const originalRef = (
+          child as unknown as { ref?: React.Ref<HTMLElement> }
+        ).ref;
+        if (typeof originalRef === 'function') originalRef(node);
+        else if (originalRef && 'current' in originalRef)
+          (originalRef as { current: HTMLElement | null }).current = node;
+      },
+      'aria-describedby': open
+        ? id
+        : (child.props as { 'aria-describedby'?: string })['aria-describedby'],
+      onMouseEnter: (e: React.MouseEvent) => {
+        show();
+        (
+          child.props as { onMouseEnter?: (e: React.MouseEvent) => void }
+        ).onMouseEnter?.(e);
+      },
+      onMouseLeave: (e: React.MouseEvent) => {
+        hide();
+        (
+          child.props as { onMouseLeave?: (e: React.MouseEvent) => void }
+        ).onMouseLeave?.(e);
+      },
+      onFocus: (e: React.FocusEvent) => {
+        show();
+        (child.props as { onFocus?: (e: React.FocusEvent) => void }).onFocus?.(
+          e,
+        );
+      },
+      onBlur: (e: React.FocusEvent) => {
+        hide();
+        (child.props as { onBlur?: (e: React.FocusEvent) => void }).onBlur?.(e);
+      },
+    } as never,
+  );
 
   return (
     <>

@@ -47,15 +47,24 @@ describe('Tabs', () => {
 
   it('only active tab is in tab order', () => {
     render(<Sample />);
-    expect(screen.getByRole('tab', { name: 'A' })).toHaveAttribute('tabindex', '0');
-    expect(screen.getByRole('tab', { name: 'B' })).toHaveAttribute('tabindex', '-1');
+    expect(screen.getByRole('tab', { name: 'A' })).toHaveAttribute(
+      'tabindex',
+      '0',
+    );
+    expect(screen.getByRole('tab', { name: 'B' })).toHaveAttribute(
+      'tabindex',
+      '-1',
+    );
   });
 
   it('aria-selected reflects state', async () => {
     const user = userEvent.setup();
     render(<Sample />);
     await user.click(screen.getByRole('tab', { name: 'B' }));
-    expect(screen.getByRole('tab', { name: 'B' })).toHaveAttribute('aria-selected', 'true');
+    expect(screen.getByRole('tab', { name: 'B' })).toHaveAttribute(
+      'aria-selected',
+      'true',
+    );
   });
 
   it('calls onChange', async () => {
